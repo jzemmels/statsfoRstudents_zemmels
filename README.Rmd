@@ -15,6 +15,7 @@ To run the shiny apps in this package, run the following:
 ```{r eval=FALSE}
 runShinyApp() #to see a list of launchable apps in the inst/shiny-examples folder
 runShinyApp("joe") #to launch Joe's shiny app
+runShinyApp("charlotte") # laung Charlotte's very sad app
 ```
 
 
