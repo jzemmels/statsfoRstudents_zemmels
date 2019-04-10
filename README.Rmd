@@ -1,0 +1,44 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+#STAT 585 Final Project
+
+```{r eval=FALSE}
+install.packages("finalProject")
+```
+
+To run the shiny apps in this package, run the following:
+
+```{r eval=FALSE}
+runShinyApp() #to see a list of launchable apps in the inst/shiny-examples folder
+runShinyApp("joe") #to launch Joe's shiny app
+```
+
+
+<!--Look at this cool plot:
+
+```{r echo=FALSE,eval=FALSE}
+library(finalProject)
+
+plotNormal(mu=5,sigma=2,alpha = .1,obs=.5)
+```
+
+We can also generate random samples from a normal distribution and plot their averages:
+
+```{r echo=FALSE,eval=FALSE}
+set.seed(123456)
+dat <- randomSample(mu=0,sigma=1,sampleSize = 25,numSamples = 100)
+
+# Histogram of values from the last of these random samples:
+randomSample_histogram(sampleData = dat,binwidth = .25,variableName = "Height",plotly = FALSE)
+
+# Data frame of sample means from the 100 amples generated above
+means <- updateSampleMeans(sampleMeans = NULL,sampleData = dat) #leaving sampleMeans argument null will generate a new vector. Can pass an existing data frame of sample means, however.
+
+# Histogram of these sample means
+sampleMeans_histogram(sampleMeans = means,binwidth = .1,variableName = "Height",plotly = FALSE)
+```
+-->

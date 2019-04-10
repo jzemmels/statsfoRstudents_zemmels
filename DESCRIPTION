@@ -1,0 +1,32 @@
+Package: finalProject
+Title: STAT 585 Final Project
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Eryn",
+           family = "Blagg",
+           role = c("aut"),
+           email = "eblagg@iastate.edu"),
+      person(given = "Gulzina",
+           family = "Kuttebekova",
+           role = c("aut"),
+           email = "kgulzina@iastate.edu"),
+      person(given = "Charlotte",
+           family = "Roiger",
+           role = c("aut"),
+           email = "croiger@iastate.edu"),
+      person(given = "Joe",
+           family = "Zemmels",
+           role = c("aut", "cre"),
+           email = "jzemmels@iastate.edu"))
+Description: Spring 2019 STAT 585 Final Project.
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+URL: https://github.com/jzemmels/finalProject
+BugReports: https://github.com/jzemmels/finalProject/issues
+Imports: 
+    magrittr
+Suggests: 
+    testthat
