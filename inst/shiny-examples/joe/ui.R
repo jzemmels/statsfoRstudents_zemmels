@@ -72,16 +72,33 @@ shinyUI(fluidPage(title="STAT 585",
                                  tableOutput("meansTable")
                                ))),
                     tabPanel("Hypothesis Test Practice",
-                             mainPanel(
-                               h5('My hope for this tab is to have a hypothesis test "game" in which students will be given a
+                             mainPanel(#withMathJax(),
+                               h4('My hope for this tab is to have a hypothesis test "game" in which students will be given a
                                   randomly selected word problem similar to one they would see on their STAT 101 homework
                                   (I will just find these on the internet) and will
                                   need to fill out the correct hypothesis test procedure (e.g., set up their null/alternative hypotheses
                                   correctly, calculate the test statistic, etc.) to "win". They could use the Normal Plot tab to
                                   visualize their null distribution and the observed value they are given in the problem to help them
                                   understand when to reject/fail to reject the null.'),
-                               h5('My current idea for the game is like "statistical MadLibs" in which students will select options
+                               h4('My current idea for the game is like "statistical MadLibs" in which students will select options
                                   from drop-down menus (e.g., <, >, \neq for the alternative distribution) or will enter values
                                   (e.g., the observed z-value). Once they fill out the form, the app will tell them whether they were
-                                  right or wrong and allow them to re-try or select a new problem.')
+                                  right or wrong and allow them to re-try or select a new problem.'),
+                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 200px;",h4("1) Null Hypothesis:")),
+                                        div(style="display: inline-block;vertical-align:middle; width: 20px;",h4(paste0(intToUtf8("0x03BC"),"="))),
+                                        div(style="display: inline-block;vertical-align:middle; width: 100px;",uiOutput("nullHypVal"))),
+                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 250px;",h4("2) Alternative Hypothesis:")),
+                                        div(style="display: inline-block;vertical-align:middle; width: 10px;",h4(intToUtf8("0x03BC"))),
+                                        div(style="display: inline-block;vertical-align:middle; width: 55px;",h4(uiOutput("altHypDir"))),
+                                        div(style="display: inline-block;vertical-align:middle; width: 100px;",uiOutput("altHypVal"))),
+                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 200px;",h4("3) Test Statistic:")),
+                                        div(style="display: inline-block;vertical-align:middle; width: 20px;",h4("z=")),
+                                        div(style="display: inline-block;vertical-align:middle; width: 100px;",h4(uiOutput("testStat")))),
+                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 400px;",h4("4) Compare Test Statistic to Null Distribution:")),
+                                        div(style="display: inline-block;width: 100px;",h4(uiOutput("testSize"))),
+                                        div(style="display: inline-block;width: 75px;",h4(uiOutput("nullSD"))),
+                                        div(style="display: inline-block;width: 100px;",actionButton("plotNull","Plot Null Distribution"))),
+                               plotlyOutput("nullDist",height="300px"),
+                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 100px;",h4("5) Decision:")),
+                                            div(style="display: inline-block;vertical-align:middle; width: 200px;",h4(uiOutput("decision"))))
                              )))))

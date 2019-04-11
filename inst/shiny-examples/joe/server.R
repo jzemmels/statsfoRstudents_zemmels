@@ -98,4 +98,64 @@ server <- function(input, output) {
                                                  outData <- select(allData,-1)
                                                  write.csv(x = outData,file = file,row.names = FALSE)
                                                  })
+
+  output$nullHypVal <- renderUI({
+    numericInput("nullVal",
+                 label = "",
+                 value = NULL)
+  })
+
+  output$altHypVal <- renderUI({
+    numericInput("altVal",
+                 label = "",
+                 value = NULL)
+  })
+
+  output$altHypDir <- renderUI({
+    selectInput("altDir",
+                label="",
+                choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
+                               ">",
+                               "<"))
+  })
+
+  output$testStat <- renderUI({
+    numericInput("hypTestStat",
+                 label="",
+                 value = NULL)
+  })
+
+  output$testSize <- renderUI({
+    numericInput("signifLevel",
+                 label="Signif Level",
+                 value = .05)
+  })
+
+  output$nullSD <- renderUI({
+    numericInput("hypTestSD",
+                 label="Population Std Dev",
+                 value = 1)
+  })
+
+  output$nullDist <- renderPlotly({
+    hypTestNullDistn()
+  })
+
+  hypTestNullDistn <- eventReactive({input$plotNull},{
+    plotNormal(mu = input$nullVal,
+                     sigma = input$hypTestSD,
+                     alpha = input$signifLevel,
+                     obs = input$hypTestStat,
+                     direction = input$altDir,
+                     plotly=TRUE)
+  })
+
+  output$decision <- renderUI({
+    selectInput("hypTestDecision",
+                label="",
+                choices = list("Reject Null",
+                               "Fail to Reject Null",
+                               "Accept Null",
+                               "Fail to Accept Null"))
+  })
 }
