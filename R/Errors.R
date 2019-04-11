@@ -1,8 +1,8 @@
-#' @name Errors 
+#' @name Errors
 #' @export
 #' @author Eryn Blagg
 #'
-#' @title Plot Type I and Type II Error 
+#' @title Plot Type I and Type II Error
 #'
 #' @description Returns a ggplot or plotly object of a normal distribution with a specified significance level
 #'
@@ -17,16 +17,16 @@
 #'
 #' @importFrom plotly ggplotly
 #' @import ggplot2
-#' 
+#'
 
 plotthis <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotly=FALSE){
-  
+
   x <- seq(means - 3*sds,means + 3*sds,by = sds/100)
-  
+
   initalplt <- ggplot(as.data.frame(x), aes(x)) +
-    stat_function(fun = dnorm,args=list(mean=means,sd=sds)) 
-  
-  if(direction == intToUtf8("8800")){ #two-sided. 
+    stat_function(fun = dnorm,args=list(mean=means,sd=sds))
+
+  if(direction == intToUtf8("8800")){ #two-sided.
     pltup <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(quantile(x,probs = 1-alpha/2),max(x)),
@@ -36,7 +36,7 @@ plotthis <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotly=
                     geom = "area")
     pltlw<-stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                          xlim = c(quantile(x,probs = alpha/2),quantile(x,probs = 1-alpha/2),
-                                  geom = "area") 
+                                  geom = "area"))
   }
   if(direction == ">"){ #greater than
     pltup <- initalplt +
@@ -58,12 +58,12 @@ plotthis <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotly=
                     xlim = c(quantile(x,probs = 1-alpha),max(x)),
                     geom = "area")
   }
-  
+
   if(plotly){ #turns ggplot into plotly object
     pltup <- ggplotly(pltup)
     pltlw<- ggplotly(pltlw)
   }
-  
+
   return(pltup)
   return(pltlw)
 }
