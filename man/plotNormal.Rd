@@ -14,7 +14,7 @@ plotNormal(mu = 0, sigma = 1, alpha = 0.05, obs = NULL,
 
 \item{alpha}{significance level}
 
-\item{obs}{observed sample mean (random generated if left blank)}
+\item{obs}{observed z-statistic (randomly generated if left blank)}
 
 \item{direction}{direction of alternative hypothesis}
 

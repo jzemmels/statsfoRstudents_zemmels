@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • finalProject</title>
+<title>Returns a randomly selected hypothesis test prompt — hypTest_prompt • finalProject</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Returns a randomly selected hypothesis test prompt — hypTest_prompt" />
+
+<meta property="og:description" content="Returns a randomly selected hypothesis test prompt as a list" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -94,96 +97,64 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Returns a randomly selected hypothesis test prompt</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jzemmels/finalProject/blob/master/R/hypTest_prompt.R'><code>R/hypTest_prompt.R</code></a></small>
+    <div class="hidden name"><code>hypTest_prompt.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Returns a randomly selected hypothesis test prompt as a list</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>hypTest_prompt</span>()</pre>
+        
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="bootstrapProcess.html">bootstrapProcess()</a></code> </p>
-        </td>
-        <td><p>Show animated/still bootstapping process</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bootstrapSample.html">bootstrapSample()</a></code> </p>
-        </td>
-        <td><p>Generate bootstrap samples</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Errors.html">plotthis()</a></code> </p>
-        </td>
-        <td><p>Plot Type I and Type II Error</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hypTest_prompt.html">hypTest_prompt()</a></code> </p>
-        </td>
-        <td><p>Returns a randomly selected hypothesis test prompt</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotNormal.html">plotNormal()</a></code> </p>
-        </td>
-        <td><p>Plot a normal distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="randomSample.html">randomSample()</a></code> </p>
-        </td>
-        <td><p>Generate an arbitrary number of random samples from a normal distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="randomSample_histogram.html">randomSample_histogram()</a></code> </p>
-        </td>
-        <td><p>Generate a histogram of a random sample</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="runShinyApp.html">runShinyApp()</a></code> </p>
-        </td>
-        <td><p>Launch a Shiny App locally</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sampleMeans_histogram.html">sampleMeans_histogram()</a></code> </p>
-        </td>
-        <td><p>Generate a histogram of sample means</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="updateSampleMeans.html">updateSampleMeans()</a></code> </p>
-        </td>
-        <td><p>Create/update a data frame of sample means</p></td>
-      </tr>
-    </tbody>
-    </table>
+    <p>a randomly selected hypothesis test prompt as a list</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>hypTest_prompt</span>()</div><div class='output co'>#&gt; $prompt
+#&gt; [1] "Blood glucose levels for obese patients have a mean of 100 with a standard deviation of 15. A researcher thinks that a diet high in raw cornstarch will have a positive or negative effect on blood glucose levels. A sample of 30 patients who have tried the raw cornstarch diet have a mean glucose level of 140. Test the hypothesis that the raw cornstarch had an effect if alpha = .05."
+#&gt; 
+#&gt; $nullVal
+#&gt; [1] 100
+#&gt; 
+#&gt; $altDir
+#&gt; [1] "&lt;U+2260&gt;"
+#&gt; 
+#&gt; $altVal
+#&gt; [1] 100
+#&gt; 
+#&gt; $testStat
+#&gt; [1] 14.60593
+#&gt; 
+#&gt; $signifLevel
+#&gt; [1] 0.05
+#&gt; 
+#&gt; $decision
+#&gt; [1] "Reject Null"
+#&gt; 
+#&gt; $source
+#&gt; [1] "https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/hypothesis-testing/#HTExamples"
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    <p>Joe Zemmels</p>
   </div>
 </div>
 

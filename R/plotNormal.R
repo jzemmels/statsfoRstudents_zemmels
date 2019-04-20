@@ -9,7 +9,7 @@
 #' @param mu mean of normal distribution
 #' @param sigma standard deviation of normal distribution
 #' @param alpha significance level
-#' @param obs observed sample mean (random generated if left blank)
+#' @param obs observed z-statistic (randomly generated if left blank)
 #' @param direction direction of alternative hypothesis
 #' @param plotly specifies whether a plotly object is desired
 #'
@@ -23,6 +23,10 @@
 #' @import ggplot2
 
 plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800"),plotly=FALSE){
+  assertNumeric(c(mu,sigma,alpha),any.missing = FALSE)
+  assertNumber(obs,null.ok = TRUE)
+  assertChoice(direction,choices = c("<",">",intToUtf8("8800")))
+  assertLogical(plotly)
 
   if(is.null(obs)){
     obs <- rnorm(n=1,mean=mu,sd=sigma)
@@ -37,22 +41,22 @@ plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800
   if(direction == intToUtf8("8800")){ #two-sided. intToUtf8("8800") is not-equal-to
     plt <- plt +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
-                    xlim = c(quantile(x,probs = 1-alpha/2),max(x)),
+                    xlim = c(qnorm(mean = mu,sd=sigma,p = 1-alpha/2),max(x)),
                     geom = "area") +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
-                    xlim = c(min(x),quantile(x,probs = alpha/2)),
+                    xlim = c(min(x),qnorm(mean = mu,sd=sigma,p = alpha/2)),
                     geom = "area")
   }
-  if(direction == ">"){ #greater than
+  if(direction == ">"){
     plt <- plt +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
-                    xlim = c(quantile(x,probs = 1-alpha),max(x)),
+                    xlim = c(qnorm(mean = mu,sd=sigma,p = 1-alpha),max(x)),
                     geom = "area")
   }
-  if(direction == "<"){ #less than by default
+  if(direction == "<"){
     plt <- plt +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
-                    xlim = c(min(x),quantile(x,probs = alpha)),
+                    xlim = c(min(x),qnorm(mean = mu,sd=sigma,p = alpha)),
                     geom = "area")
   }
 

@@ -3,9 +3,9 @@ library(plotly)
 library(finalProject)
 
 
-shinyUI(fluidPage(title="STAT 585",
+shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                   tabsetPanel(#widths=c(2,10),
-                    tabPanel("Normal Plot",
+                    tabPanel(h4("Normal Plot"),
                              sidebarLayout(
                                sidebarPanel(width=3,
                                             selectInput("distributionType",
@@ -28,13 +28,13 @@ shinyUI(fluidPage(title="STAT 585",
                                                                        ">",
                                                                        "<")),
                                             numericInput("obsZ",
-                                                         label= "Observed Z-value",
+                                                         label= "Observed Test Statistic",
                                                          value=0)),
                                # Show a plot of the generated distribution
                                mainPanel(
                                  plotlyOutput(outputId = "distPlot")
                                ))),
-                    tabPanel("Sampling Distribution of Sample Means",
+                    tabPanel(h4("Sampling Distribution of Sample Means"),
                              sidebarLayout(
                                sidebarPanel(width=3,selectInput("distributionType",
                                                                 label="Population Shape",
@@ -71,34 +71,47 @@ shinyUI(fluidPage(title="STAT 585",
                                  h4("Means Summary Table:"),
                                  tableOutput("meansTable")
                                ))),
-                    tabPanel("Hypothesis Test Practice",
-                             mainPanel(#withMathJax(),
-                               h4('My hope for this tab is to have a hypothesis test "game" in which students will be given a
-                                  randomly selected word problem similar to one they would see on their STAT 101 homework
-                                  (I will just find these on the internet) and will
-                                  need to fill out the correct hypothesis test procedure (e.g., set up their null/alternative hypotheses
-                                  correctly, calculate the test statistic, etc.) to "win". They could use the Normal Plot tab to
-                                  visualize their null distribution and the observed value they are given in the problem to help them
-                                  understand when to reject/fail to reject the null.'),
-                               h4('My current idea for the game is like "statistical MadLibs" in which students will select options
-                                  from drop-down menus (e.g., <, >, \neq for the alternative distribution) or will enter values
-                                  (e.g., the observed z-value). Once they fill out the form, the app will tell them whether they were
-                                  right or wrong and allow them to re-try or select a new problem.'),
-                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 200px;",h4("1) Null Hypothesis:")),
-                                        div(style="display: inline-block;vertical-align:middle; width: 20px;",h4(paste0(intToUtf8("0x03BC"),"="))),
-                                        div(style="display: inline-block;vertical-align:middle; width: 100px;",uiOutput("nullHypVal"))),
-                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 250px;",h4("2) Alternative Hypothesis:")),
-                                        div(style="display: inline-block;vertical-align:middle; width: 10px;",h4(intToUtf8("0x03BC"))),
-                                        div(style="display: inline-block;vertical-align:middle; width: 55px;",h4(uiOutput("altHypDir"))),
-                                        div(style="display: inline-block;vertical-align:middle; width: 100px;",uiOutput("altHypVal"))),
-                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 200px;",h4("3) Test Statistic:")),
-                                        div(style="display: inline-block;vertical-align:middle; width: 20px;",h4("z=")),
-                                        div(style="display: inline-block;vertical-align:middle; width: 100px;",h4(uiOutput("testStat")))),
-                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 400px;",h4("4) Compare Test Statistic to Null Distribution:")),
-                                        div(style="display: inline-block;width: 100px;",h4(uiOutput("testSize"))),
-                                        div(style="display: inline-block;width: 75px;",h4(uiOutput("nullSD"))),
-                                        div(style="display: inline-block;width: 100px;",actionButton("plotNull","Plot Null Distribution"))),
-                               plotlyOutput("nullDist",height="300px"),
-                               fluidRow(div(style="display: inline-block;vertical-align:middle; width: 100px;",h4("5) Decision:")),
-                                            div(style="display: inline-block;vertical-align:middle; width: 200px;",h4(uiOutput("decision"))))
-                             )))))
+                    tabPanel(h4("Hypothesis Test Practice"),
+                             fluidRow(
+                               br(),
+                               column(width=3,
+                                      actionButton("newQuestion",label=h4("New Hypothesis Test Problem"))
+                               )
+                               ,
+                               # sidebarLayout(
+                               #   sidebarPanel(width=3,
+                               #     actionButton("newQuestion",label="New Hypothesis Test Problem")
+                               #   ),
+                               column(width=9,#withMathJax(),
+                                      # br(),
+                                      h3("Prompt:"),
+                                      h4(textOutput("prompt")),
+                                      fluidRow(column(width=9,h3("1) Null Hypothesis:"))),
+                                      fluidRow(column(width=1,h4(paste(intToUtf8("0x03BC"),"="),style="padding:0px;")),
+                                               column(width=2,uiOutput("nullHypVal"),style="padding:0px;"),
+                                               column(width=6,textOutput("nullHypFeedback"),style="padding:0px;")),
+                                      fluidRow(column(width=9,h3("2) Alternative Hypothesis:"))),
+                                      fluidRow(column(width=1,h4(intToUtf8("0x03BC"))),
+                                               column(width=1,h4(uiOutput("altHypDir"))),
+                                               column(width=2,uiOutput("altHypVal")),
+                                               column(width=5,textOutput("altHypFeedback"))),
+                                      fluidRow(column(width=9,h3("3) Test Statistic (within .1 of true value):"))),
+                                      fluidRow(column(width=1,h4("z=")),
+                                               column(width=2,h4(uiOutput("testStat"))),
+                                               column(width=6,textOutput("testStatFeedback"))),
+                                      fluidRow(column(width=9,h3("4) Compare Test Statistic to Null Distribution:"))),
+                                      fluidRow(column(width=2,h4(uiOutput("testSize"))),
+                                               # div(style="display: inline-block;width: 75px;",h4(uiOutput("nullSD"))),
+                                               column(width=3,actionButton("plotNull","Plot Null Distribution")),
+                                               column(width=4,textOutput("testSizeFeedback"))),
+                                      plotlyOutput("nullDist",height="300px"),
+                                      fluidRow(column(width=9,h3("5) Decision:"))),
+                                      fluidRow(column(width=3,h4(uiOutput("decision"))),
+                                               column(width=6,textOutput("decisionFeedback"))),
+                                      h3("Problem Source:"),
+                                      h4(uiOutput("source"))#,
+                                      # fluidRow(column(width=9,h3("6) Conclusion:"))),
+                                      # fluidRow(column(width=2,h4("There is ")),
+                                      #          column(width=2,h4(uiOutput("conclusionSignif"))),
+                                      #          column(width=5,h4(" evidence to conclude that the true mean is ")))
+                               ))))))

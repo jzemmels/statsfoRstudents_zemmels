@@ -3,6 +3,8 @@
 STAT 585 Final Project
 ======================
 
+[![Coverage status](https://codecov.io/gh/jzemmels/finalProject/branch/master/graph/badge.svg)](https://codecov.io/github/jzemmels/finalProject?branch=master)
+
 ``` r
 install.packages("finalProject")
 ```

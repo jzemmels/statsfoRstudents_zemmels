@@ -20,7 +20,7 @@
 #' @import checkmate
 
 randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
-  assertNumeric(c(mu,sigma,sampleSize,numSamples))
+  assertNumeric(c(mu,sigma,sampleSize,numSamples),any.missing = FALSE)
 
   dat <- rnorm(n=sampleSize*numSamples,mean=mu,sd=sigma) %>%
     matrix(ncol=numSamples) %>%
@@ -55,8 +55,8 @@ randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
 
 randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",plotly=FALSE){
   assertDataFrame(sampleData,any.missing = FALSE)
-  assertNumber(binwidth)
-  assertCharacter(variableName)
+  assertNumber(binwidth,na.ok = FALSE)
+  assertCharacter(variableName,any.missing = FALSE)
   assertLogical(plotly)
 
   dat <- data.frame(x=sampleData[,ncol(sampleData)]) #grabs last sample in sampleData
@@ -96,7 +96,7 @@ randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",p
 
 updateSampleMeans <- function(sampleData,sampleMeans=NULL){
   assertDataFrame(sampleMeans,null.ok = TRUE)
-  assertDataFrame(sampleData,any.missing = FALSE)
+  assertDataFrame(sampleData,null.ok = TRUE,any.missing = FALSE)
 
   if(is.null(sampleMeans)){
     sampleMeans <- data.frame() #initialize an empty data frame if sampleMeans hasn't been passed
