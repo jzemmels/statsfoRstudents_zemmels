@@ -23,8 +23,8 @@
 #' @import ggplot2
 
 plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800"),plotly=FALSE){
-  assertNumeric(c(mu,sigma,alpha),any.missing = FALSE)
-  assertNumber(obs,null.ok = TRUE)
+  assertNumeric(c(mu,sigma,alpha),any.missing = FALSE,finite = TRUE)
+  assertNumber(obs,null.ok = TRUE,finite=TRUE)
   assertChoice(direction,choices = c("<",">",intToUtf8("8800")))
   assertLogical(plotly)
 

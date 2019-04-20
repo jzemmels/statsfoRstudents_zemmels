@@ -20,7 +20,7 @@
 #' @import checkmate
 
 randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
-  assertNumeric(c(mu,sigma,sampleSize,numSamples),any.missing = FALSE)
+  assertNumeric(c(mu,sigma,sampleSize,numSamples),any.missing = FALSE,finite = TRUE)
 
   dat <- rnorm(n=sampleSize*numSamples,mean=mu,sd=sigma) %>%
     matrix(ncol=numSamples) %>%
@@ -55,7 +55,7 @@ randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
 
 randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",plotly=FALSE){
   assertDataFrame(sampleData,any.missing = FALSE)
-  assertNumber(binwidth,na.ok = FALSE)
+  assertNumber(binwidth,na.ok = FALSE,finite = TRUE)
   assertCharacter(variableName,any.missing = FALSE)
   assertLogical(plotly)
 
@@ -134,7 +134,7 @@ updateSampleMeans <- function(sampleData,sampleMeans=NULL){
 
 sampleMeans_histogram <- function(sampleMeans,binwidth=1,variableName="Height",plotly=FALSE){
   assertDataFrame(sampleMeans,any.missing = FALSE)
-  assertNumber(binwidth)
+  assertNumber(binwidth,na.ok = FALSE,finite = TRUE)
   assertCharacter(variableName)
   assertLogical(plotly)
 
