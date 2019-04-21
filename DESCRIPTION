@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut"),
            email = "eblagg@iastate.edu"),
       person(given = "Gulzina",
-           family = "Kuttebekova",
+           family = "Kuttubekova",
            role = c("aut"),
            email = "kgulzina@iastate.edu"),
       person(given = "Charlotte",
@@ -19,7 +19,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jzemmels@iastate.edu"))
 Description: Spring 2019 STAT 585 Final Project.
-License: What license it uses
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
