@@ -38,7 +38,7 @@ randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
 #'
 #' @description Returns a ggplot or plotly object of a histogram generated from a random sample
 #'
-#' @param randomSample data frame of random samples from a normal distribution
+#' @param sampleData data frame of random samples from a normal distribution
 #' @param binwidth width of bins in histogram
 #' @param variableName name of variable to be labeled on the x-axis of histogram
 #' @param plotly specifies whether a plotly object is desired
@@ -83,7 +83,7 @@ randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",p
 #'
 #' @description Creates or updates a data frame of sample means from a randomSample object passed to it
 #'
-#' @param randomSample data frame of random samples from a normal distribution
+#' @param sampleData data frame of random samples from a normal distribution
 #' @param sampleMeans data frame of sample means (empty data frame is initialized if this is argument is blank)
 #'
 #' @return A data frame of sample means from each sample in randomSample

@@ -8,13 +8,13 @@ randomSample_histogram(sampleData, binwidth = 1,
   variableName = "Height", plotly = FALSE)
 }
 \arguments{
+\item{sampleData}{data frame of random samples from a normal distribution}
+
 \item{binwidth}{width of bins in histogram}
 
 \item{variableName}{name of variable to be labeled on the x-axis of histogram}
 
 \item{plotly}{specifies whether a plotly object is desired}
-
-\item{randomSample}{data frame of random samples from a normal distribution}
 }
 \value{
 A ggplot or plotly object, depending on whether the plotly argument was specified TRUE or FALSE.

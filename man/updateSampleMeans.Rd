@@ -7,9 +7,9 @@
 updateSampleMeans(sampleData, sampleMeans = NULL)
 }
 \arguments{
-\item{sampleMeans}{data frame of sample means (empty data frame is initialized if this is argument is blank)}
+\item{sampleData}{data frame of random samples from a normal distribution}
 
-\item{randomSample}{data frame of random samples from a normal distribution}
+\item{sampleMeans}{data frame of sample means (empty data frame is initialized if this is argument is blank)}
 }
 \value{
 A data frame of sample means from each sample in randomSample
