@@ -18,6 +18,7 @@
 #'
 #' @import magrittr
 #' @import checkmate
+#' @importFrom stats rnorm
 
 randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
   assertNumeric(c(mu,sigma,sampleSize,numSamples),any.missing = FALSE,finite = TRUE)
@@ -52,6 +53,7 @@ randomSample <- function(mu=0,sigma=1,sampleSize=25,numSamples=1){
 #' @importFrom plotly ggplotly
 #' @import ggplot2
 #' @import checkmate
+#' @importFrom rlang .data
 
 randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",plotly=FALSE){
   assertDataFrame(sampleData,any.missing = FALSE)
@@ -64,7 +66,7 @@ randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",p
   #sampleBinwidth <- as.numeric(2*(quantile(dat$x,.75) - quantile(dat$x,.25))*(length(dat$x))^(-1/3)) ##https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule
 
   plt <- dat %>%
-    ggplot(aes(x=x)) +
+    ggplot(aes(x=.data$x)) +
     geom_histogram(binwidth=binwidth,fill="darkgreen") +
     xlab(variableName)
 
@@ -131,6 +133,7 @@ updateSampleMeans <- function(sampleData,sampleMeans=NULL){
 #' @import ggplot2
 #' @import magrittr
 #' @import checkmate
+#' @importFrom rlang .data
 
 sampleMeans_histogram <- function(sampleMeans,binwidth=1,variableName="Height",plotly=FALSE){
   assertDataFrame(sampleMeans,any.missing = FALSE)
@@ -141,7 +144,7 @@ sampleMeans_histogram <- function(sampleMeans,binwidth=1,variableName="Height",p
   #meansBinwidth <- as.numeric(2*(quantile(sampleMeans$means,.75) - quantile(sampleMeans$means,.25))*(length(sampleMeans$means))^(-1/3)) #https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule
 
   plt <- sampleMeans %>%
-    ggplot(aes(x=means)) +
+    ggplot(aes(x=.data$means)) +
     geom_histogram(binwidth=binwidth,fill="darkgreen",na.rm=TRUE) +
     xlab(paste("Mean",variableName))
 

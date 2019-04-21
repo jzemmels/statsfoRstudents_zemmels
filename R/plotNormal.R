@@ -20,6 +20,7 @@
 #' plotNormal(mu=5,sigma=2,alpha=.1,obs=.5,plotly=TRUE) #customized plotly
 #'
 #' @importFrom plotly ggplotly
+#' @importFrom stats dnorm qnorm rnorm
 #' @import ggplot2
 
 plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800"),plotly=FALSE){

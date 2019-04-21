@@ -34,6 +34,8 @@ Imports:
     plotly,
     purrr,
     shiny,
-    testthat
+    testthat,
+    assertthat,
+    rlang
 Suggests:
     covr

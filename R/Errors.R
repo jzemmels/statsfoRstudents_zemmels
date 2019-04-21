@@ -17,7 +17,8 @@
 #'
 #' @importFrom plotly ggplotly
 #' @import ggplot2
-#'
+#' @importFrom stats quantile
+#' @importFrom rlang .data
 
 plotthis <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotly=FALSE){
 
