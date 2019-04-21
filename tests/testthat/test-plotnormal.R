@@ -17,6 +17,10 @@ test_that("arguments are checked", {
 
 test_that("output is checked",{
   expect_class(plotNormal(),c("gg","ggplot"))
+  expect_class(plotNormal(direction = ">"),c("gg","ggplot"))
+  expect_class(plotNormal(direction = "<"),c("gg","ggplot"))
   expect_class(plotNormal(plotly=TRUE),c("plotly","htmlwidget"))
+  expect_class(plotNormal(plotly=TRUE,direction = ">"),c("plotly","htmlwidget"))
+  expect_class(plotNormal(plotly=TRUE,direction = "<"),c("plotly","htmlwidget"))
 })
 
