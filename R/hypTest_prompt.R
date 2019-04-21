@@ -14,7 +14,7 @@
 #' @importFrom purrr flatten
 
 hypTest_prompt <- function(){
-  Q1 <- list(prompt = "According the the U.S. Department of Education, full-time graduate students receive an average salary of $12,800. The dean of graduate studies at a large state university in PA claims that his graduate students earn more than this. He surveys 46 randomly selected students and finds their average salary is $13,445 with a standard deviation of $1800. With alpha = 0.05, is the dean’s claim correct?",
+  Q1 <- list(prompt = "According the the U.S. Department of Education, full-time graduate students receive an average salary of $12,800. The dean of graduate studies at a large state university in PA claims that his graduate students earn more than this. He surveys 46 randomly selected students and finds their average salary is $13,445 with a standard deviation of $1800. With alpha = 0.05, is the dean\u0027s claim correct?",
              nullVal = 12800,
              altDir = ">",
              altVal = 12800,
@@ -41,7 +41,7 @@ hypTest_prompt <- function(){
              decision = "Fail to Reject Null",
              source = "https://sites.psu.edu/stat200psbsp2013/2013/03/19/one-sample-z-test-problems-with-solutions/")
 
-  Q4 <- list(prompt = "A herd of 1,500 steer was fed a special high‐protein grain for a month. A random sample of 29 were weighed and had gained an average of 6.7 pounds. If the standard deviation of weight gain for the entire herd is 7.1 and we choose alpha = .1, test the hypothesis that the average weight gain per steer for the month was more than 5 pounds.",
+  Q4 <- list(prompt = "A herd of 1,500 steer was fed a special high\u002Dprotein grain for a month. A random sample of 29 were weighed and had gained an average of 6.7 pounds. If the standard deviation of weight gain for the entire herd is 7.1 and we choose alpha = .1, test the hypothesis that the average weight gain per steer for the month was more than 5 pounds.",
              nullVal = 5,
              altDir = ">",
              altVal = 5,
@@ -59,7 +59,7 @@ hypTest_prompt <- function(){
              decision = "Fail to Reject Null",
              source = "https://www.cliffsnotes.com/study-guides/statistics/univariate-inferential-tests/one-sample-z-test")
 
-  Q6 <- list(prompt = "Twenty five high school students complete a preparation program for taking the SAT test. The mean of these scores is 536.00.  We know that the population average for SAT scores is 500 with a standard deviation of 100. The question is, are these students’ SAT scores significantly greater than a population mean of 500 with a population standard deviation of 100? Assume alpha = .05.",
+  Q6 <- list(prompt = "Twenty five high school students complete a preparation program for taking the SAT test. The mean of these scores is 536.00.  We know that the population average for SAT scores is 500 with a standard deviation of 100. The question is, are these students\u0027 SAT scores significantly greater than a population mean of 500 with a population standard deviation of 100? Assume alpha = .05.",
              nullVal = 500,
              altDir = ">",
              altVal = 500,
