@@ -15,23 +15,26 @@
 #'
 #' @importFrom plotly plot_ly layout animation_opts animation_slider animation_button
 #' @importFrom dplyr %>%
+#' @importFrom assertthat not_empty
+#' @importFrom rlang is_scalar_integerish
+#' @importFrom checkmate assert anyMissing
 
 bootstrapSample <- function(s, n) {
-  # assert that n is scalar, numeric, not NaN or Inf
-  assert( # what to use here? check or expect?????
-    check_scalar(n),
-    check_int(n, na.ok = FALSE)
+  # assert that n is scalar, numeric, not NaN, NA, Inf or 0
+  assert(
+    is_scalar_integerish(n)
   )
-  if (is.nan(n) || is.infinite(n)) {
-    stop("n can't be NaN or Inf")
+  if (is.nan(n) || is.infinite(n) || n == 0) {
+    stop("n can't be NaN, Inf or zero")
   }
 
   # assert that s is non-empty vector, does not contain Inf, NA or NaN
-  assert( # what to use here? check or expect?????
-    check_vector(s),
+  assert(
+    is.vector(s),
     not_empty(s),
-    anyMissing(s),
-    anyInfinite(s)
+    (!anyMissing(s)),
+    (!anyInfinite(s)),
+    combine = "and"
   )
 
   # constants

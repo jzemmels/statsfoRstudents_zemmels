@@ -13,17 +13,20 @@
 #'
 #' @examples bootstrapProcess(rnorm(30), TRUE)
 #'
-#' @importFrom plotly plot_ly layout animation_opts animation_slider layout add_text
+#' @importFrom plotly plot_ly toRGB layout animation_opts animation_slider layout add_text
 #' @importFrom dplyr %>%
+#' @importFrom assertthat not_empty
+#' @importFrom checkmate assert anyMissing
 
 bootstrapProcess <- function(s, anime) {
   ### here check the inputs and all other things!!!
   # assert that s is non-empty vector, does not contain Inf, NA or NaN
-  assert( # what to use here? check or expect?????
-    check_vector(s),
+  assert(
+    is.vector(s),
     not_empty(s),
-    anyMissing(s),
-    anyInfinite(s)
+    !anyMissing(s),
+    !anyInfinite(s),
+    combine = "and"
   )
 
   # check if correct valid boolean value is entered
@@ -31,6 +34,9 @@ bootstrapProcess <- function(s, anime) {
   if (!anime %in% v) {
     stop("Enter a valid boolean anime value!")
   }
+  assert(
+    !is.na(anime)
+  )
 
   # constants
   n = length(s)
