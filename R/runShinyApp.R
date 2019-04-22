@@ -1,5 +1,4 @@
 #' @name runShinyApp
-#' @export
 #' @author Joe Zemmels
 #' @source https://deanattali.com/2015/04/21/r-package-shiny-app/
 #' @title Launch a Shiny App locally
