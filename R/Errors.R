@@ -1,4 +1,4 @@
-#' @name Errors
+#' @name ploterrors
 #' @export
 #' @author Eryn Blagg
 #'
