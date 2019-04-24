@@ -1,14 +1,14 @@
 context("test-error")
 
 test_that("arguments are checked", {
-  expect_error(errors(mu="a"))
-  expect_error(errors(sigma="a"))
+  expect_error(errors(means="a"))
+  expect_error(errors(sds="a"))
   expect_error(errors(alpha="a"))
   expect_error(errors(direction = 1))
   expect_error(errors(plotly="a"))
 
-  expect_error(errors(mu=NA))
-  expect_error(errors(sigma=NA))
+  expect_error(errors(means=NA))
+  expect_error(errors(sds=NA))
   expect_error(errors(alpha=NA))
   expect_error(errors(direction = NA))
   expect_error(errors(plotly=NA))

@@ -46,7 +46,7 @@ errors <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),alt= 1 ,p
                     geom = "area")
     pltlw <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
-                    xlim = c(min(y),quantile(x,probs = alpha) ),
+                    xlim = c(min(x),quantile(x,probs = alpha) ),
                     geom = "area")
   }
   if(direction == "<"){ #less than by default
