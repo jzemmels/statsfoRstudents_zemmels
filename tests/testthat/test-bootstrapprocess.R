@@ -17,3 +17,6 @@ test_that("anime value is valid", {
   expect_error(bootstrapProcess(1:30), anime = "cats")
   expect_error(bootstrapProcess(1:30), anime = t)
 })
+
+
+
