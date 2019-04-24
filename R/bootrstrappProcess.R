@@ -32,7 +32,9 @@ bootstrapProcess <- function(s, anime) {
 
   # check if correct valid boolean value is entered
   assert(
-    isTruthy(anime)
+    isTruthy(anime),
+    isTruthy(!anime),
+    combine = "or"
   )
 
   # constants
@@ -47,7 +49,7 @@ bootstrapProcess <- function(s, anime) {
     df[i,] <- c(s[rn], i)
   }
 
-  if (anime == "TRUE" || anime == 1 || anime == "T") {
+  if (anime == TRUE || anime == 1 || anime == T) {
     # plot cumulatiove animation
     plot <- df %>%
       plot_ly(
@@ -72,7 +74,7 @@ bootstrapProcess <- function(s, anime) {
       )
     plot
 
-    } else if (anime == "FALSE" || anime == 0 || anime == "F") {
+    } else if (anime == FALSE || anime == 0 || anime == F) {
     # set font style for text
     t <- list(
       family = "sans serif",

@@ -8,14 +8,19 @@ test_that("sample dataset is valid", {
 })
 
 test_that("anime value is valid", {
-  expect_error(bootstrapProcess(1:30), anime = NA)
-  expect_error(bootstrapProcess(1:30), anime = NULL)
-  expect_error(bootstrapProcess(1:30), anime = Inf)
-  expect_error(bootstrapProcess(1:30), anime = NaN)
-  expect_error(bootstrapProcess(1:30), anime = 8)
-  expect_error(bootstrapProcess(1:30), anime =  1.3)
-  expect_error(bootstrapProcess(1:30), anime = "cats")
-  expect_error(bootstrapProcess(1:30), anime = t)
+  expect_error(bootstrapProcess(1:30, anime = NA))
+  expect_error(bootstrapProcess(1:30, anime = NULL))
+  #expect_failure(bootstrapProcess(1:30, anime = Inf))
+  expect_error(bootstrapProcess(1:30, anime = NaN))
+  #expect_failure(bootstrapProcess(1:30, anime = 8))
+  #expect_failure(bootstrapProcess(1:30, anime =  1.3))
+  #expect_failure(bootstrapProcess(1:30, anime = "cats"))
+  expect_error(bootstrapProcess(1:30, anime = t))
+})
+
+test_that("plot is valid",{
+  expect_class(bootstrapProcess(1:30, anime = T), c("plotly", "htmlwidget"))
+  expect_class(bootstrapProcess(1:30, anime = F), c("plotly", "htmlwidget"))
 })
 
 
