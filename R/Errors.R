@@ -2,7 +2,7 @@
 #' @export
 #' @author Eryn Blagg
 #'
-#' @title Plot Type I and Type II Error with Acceptance and Rejection Regions
+#' @title Plot Type I and Type II Error
 #'
 #' @description Returns a ggplot or plotly object of a normal distribution with a specified significance level
 #'
