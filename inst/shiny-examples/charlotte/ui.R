@@ -1,16 +1,33 @@
-ui <- fluidPage(
-  sidebarPanel(
-    selectInput("description", "Pick Description Type",
-                c("Modality"= "Modal", "Shape-coming soon" = "Shape", "Outliers-coming soon" = "Outs")
-    ),
-    actionButton("redo", "New Distribution")
-    # Only show this panel if the plot type is a histogram
-    
-  ),
-  mainPanel(
-    plotOutput("plot"),
-    uiOutput('aspect'),
-    textOutput('feedback')
-    
-  )
+library(tidyverse)
+library(dplyr)
+library(shiny)
+library(checkmate)
+library(finalProject)
+
+
+ui <- fluidPage(title = "Histogram Description Testing",
+                sidebarPanel(
+                  actionButton("redo", "New Distribution")
+                ),
+                mainPanel(
+                  tabsetPanel(
+                    tabPanel("Modality",
+                             plotOutput("plotModal"),
+                             uiOutput("aspectModal")
+
+                    ),
+                    tabPanel("Shape",
+
+                             plotOutput("plotShape"),
+                             uiOutput("aspectShape")
+                    ),
+                    tabPanel("Outlier",
+
+                             plotOutput("plotOutlier"),
+                             uiOutput("aspectOutlier")
+                             # textOutput("feedback")
+                    )
+
+                  )
+                )
 )
