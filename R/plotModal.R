@@ -11,7 +11,7 @@
 #' @return A list consisting of one character string and a ggplot object
 #'
 #' @import ggplot2
-#' @importFrom case_when
+#' @importFrom dplyr case_when
 #' @import checkmate
 
 plotModal <- function(randomDist=1){
