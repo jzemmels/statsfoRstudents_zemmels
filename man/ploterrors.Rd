@@ -5,7 +5,7 @@
 \title{Plot Type I and Type II Error}
 \usage{
 ploterrors(means = 0, sds = 1, alpha = 0.05,
-  direction = intToUtf8("8800"), alt = 1, plotly = FALSE)
+  direction = intToUtf8("8800"), plotly = FALSE)
 }
 \arguments{
 \item{means}{mean of normal distribution}
