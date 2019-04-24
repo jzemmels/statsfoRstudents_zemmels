@@ -17,6 +17,7 @@
 #' @importFrom dplyr %>%
 #' @importFrom assertthat not_empty
 #' @importFrom checkmate assert anyMissing
+#' @importFrom shiny isTruthy
 
 bootstrapProcess <- function(s, anime) {
   ### here check the inputs and all other things!!!
@@ -30,12 +31,8 @@ bootstrapProcess <- function(s, anime) {
   )
 
   # check if correct valid boolean value is entered
-  v <- c("TRUE", "T", 1, "FALSE", "F", 0)
-  if (!anime %in% v) {
-    stop("Enter a valid boolean anime value!")
-  }
   assert(
-    !is.na(anime)
+    isTruthy(anime)
   )
 
   # constants
