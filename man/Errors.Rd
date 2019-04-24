@@ -2,11 +2,11 @@
 % Please edit documentation in R/Errors.R
 \name{Errors}
 \alias{Errors}
-\alias{plotthis}
+\alias{errors}
 \title{Plot Type I and Type II Error}
 \usage{
-plotthis(means = 0, sds = 1, alpha = 0.05,
-  direction = intToUtf8("8800"), plotly = FALSE)
+errors(means = 0, sds = 1, alpha = 0.05,
+  direction = intToUtf8("8800"), alt = 1, plotly = FALSE)
 }
 \arguments{
 \item{means}{mean of normal distribution}
