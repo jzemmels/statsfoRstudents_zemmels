@@ -17,6 +17,10 @@ A list of n bootstrap samples
 \description{
 Takes in dataset in a vector form. Returns a list of n bootstrap sample.
 }
+\examples{
+bootstrapSample(rnorm(30), 8)
+
+}
 \author{
 Gulzina Kuttubekova
 }
