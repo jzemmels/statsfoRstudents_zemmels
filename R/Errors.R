@@ -20,7 +20,7 @@
 #' @importFrom stats quantile
 #' @importFrom rlang .data
 
-plotthis <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),alt= 1 ,plotly=FALSE){
+errors <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),alt= 1 ,plotly=FALSE){
 
   x <- seq(means - 3*sds,means + 3*sds,by = sds/100)
 
