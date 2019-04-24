@@ -17,3 +17,6 @@ test_that("sample dataset is valid", {
   expect_error(bootstrapSample(rnorm, 8))
 })
 
+test_that("output is a list", {
+  expect_true(is.list(bootstrapSample(1:30, 8)))
+})

@@ -3,12 +3,16 @@
 export("%>%")
 export(bootstrapProcess)
 export(bootstrapSample)
+export(errors)
 export(hypTest_prompt)
 export(plotModal)
 export(plotNormal)
 export(plotOutlier)
 export(plotShape)
+<<<<<<< HEAD
+=======
 export(ploterrors)
+>>>>>>> e064be24d63e689506f34ff93a163d89ba0c6555
 export(randomSample)
 export(randomSample_histogram)
 export(sampleMeans_histogram)
