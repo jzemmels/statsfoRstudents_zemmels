@@ -11,7 +11,7 @@
 #'
 #' @return A list of n bootstrap samples
 #'
-#' @example bootstrapSample(rnorm(30), 8)
+#' @examples bootstrapSample(rnorm(30), 8)
 #'
 #' @importFrom plotly plot_ly layout animation_opts animation_slider animation_button
 #' @importFrom dplyr %>%
