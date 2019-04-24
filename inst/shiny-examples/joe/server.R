@@ -1,7 +1,6 @@
 library(shiny)
 library(shinyjs)
 library(plotly)
-library(finalProject)
 library(dplyr)
 library(praise)
 
