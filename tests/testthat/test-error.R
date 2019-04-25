@@ -16,15 +16,6 @@ test_that("arguments are checked", {
   expect_error(ploterrors(plotly=NA))
 })
 
-test_that("plotup output is checked",{
-  expect_class(pltup(),c("gg","ggplot"))
-  expect_class(pltup(plotly=TRUE),c("plotly","htmlwidget"))
-})
-
-test_that("plotlw output is checked",{
-  expect_class(pltlw(sampleData = x),c("gg","ggplot"))
-  expect_class(pltlw(sampleData = x,plotly=TRUE),c("plotly","htmlwidget"))
-})
 
 
 test_that("output is checked",{
