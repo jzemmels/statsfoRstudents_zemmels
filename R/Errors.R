@@ -36,7 +36,8 @@ ploterrors <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotl
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(min(x),quantile(x,probs = alpha/2)),
                     geom = "area")
-    pltlw<-stat_function(fun = dnorm,args=list(mean=means,sd=sds),
+    pltlw<- initalplt +
+      stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                          xlim = c(quantile(x,probs = alpha/2),quantile(x,probs = 1-alpha/2),
                                   geom = "area"))
   }

@@ -1,6 +1,7 @@
 context("test-error")
 
-
+plt <- finalProject::ploterrors()
+pltly <- finalProject::ploterrors(plotly = TRUE)
 
 test_that("arguments are checked", {
   expect_error(ploterrors(means="a"))
@@ -17,13 +18,13 @@ test_that("arguments are checked", {
 })
 
 test_that("plotup output is checked",{
-  expect_class(pltup(),c("gg","ggplot"))
-  expect_class(pltup(plotly=TRUE),c("plotly","htmlwidget"))
+  expect_class(plt[[1]],c("gg","ggplot"))
+  expect_class(pltly[[1]],c("plotly","htmlwidget"))
 })
 
 test_that("plotlw output is checked",{
-  expect_class(pltlw(sampleData = x),c("gg","ggplot"))
-  expect_class(pltlw(sampleData = x,plotly=TRUE),c("plotly","htmlwidget"))
+  expect_class(plt[[2]],c("gg","ggplot"))
+  expect_class(pltly[[2]],c("plotly","htmlwidget"))
 })
 
 
