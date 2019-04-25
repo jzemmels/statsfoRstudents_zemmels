@@ -14,4 +14,9 @@ test_that("arguments are checked", {
   expect_error(ploterrors(plotly=NA))
 })
 
+test_that("output is checked",{
+  expect_class(ploterrors(),"list")})
+
+
+
 
