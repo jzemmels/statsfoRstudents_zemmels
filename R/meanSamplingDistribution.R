@@ -68,7 +68,8 @@ randomSample_histogram <- function(sampleData,binwidth=1,variableName="Height",p
   plt <- dat %>%
     ggplot(aes(x=.data$x)) +
     geom_histogram(binwidth=binwidth,fill="darkgreen") +
-    xlab(variableName)
+    xlab(variableName) +
+    theme_bw()
 
   if(plotly==TRUE){
     plt <- ggplotly(plt)
@@ -146,7 +147,8 @@ sampleMeans_histogram <- function(sampleMeans,binwidth=1,variableName="Height",p
   plt <- sampleMeans %>%
     ggplot(aes(x=.data$means)) +
     geom_histogram(binwidth=binwidth,fill="darkgreen",na.rm=TRUE) +
-    xlab(paste("Mean",variableName))
+    xlab(paste("Mean",variableName)) +
+    theme_bw()
 
   if(plotly==TRUE){
     plt <- ggplotly(plt)

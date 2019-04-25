@@ -10,26 +10,26 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                              sidebarLayout(
                                sidebarPanel(width=3,
                                             selectInput("distributionType",
-                                                        label="Population Shape",
+                                                        label=h4("Population Shape"),
                                                         choices = list("Normal",
                                                                        "Another Option"),
                                                         selected="Normal"),
                                             numericInput("normalPlot_mu",
-                                                         label = "Population Mean",
+                                                         label = h4("Population Mean"),
                                                          value=0),
                                             numericInput("normalPlot_sigma",
-                                                         label = "Population Standard Deviation",
+                                                         label = h4("Population Standard Deviation"),
                                                          value=1),
                                             numericInput("alpha",
-                                                         label = "Significance Level",
+                                                         label = h4("Significance Level"),
                                                          value=.05),
                                             selectInput("dir",
-                                                        label="Direction of Alternative Hypothesis",
+                                                        label= h4("Direction of Alternative Hypothesis"),
                                                         choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
                                                                        ">",
                                                                        "<")),
                                             numericInput("obsZ",
-                                                         label= "Observed Test Statistic",
+                                                         label= h4("Observed Test Statistic"),
                                                          value=0)),
                                # Show a plot of the generated distribution
                                mainPanel(
@@ -38,28 +38,31 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                     tabPanel(h4("Sampling Distribution of Sample Means"),
                              sidebarLayout(
                                sidebarPanel(width=3,selectInput("distributionType",
-                                                                label="Population Shape",
+                                                                label=h4("Population Shape"),
                                                                 choices = list("Normal",
                                                                                "Another Option"),
                                                                 selected="Normal"),
                                             numericInput("sampleDist_mu",
-                                                         label = "Population Mean",
+                                                         label = h4("Population Mean"),
                                                          value=0),
                                             numericInput("sampleDist_sigma",
-                                                         label = "Population Standard Deviation",
+                                                         label = h4("Population Standard Deviation"),
                                                          value=1),
                                             textInput("name",
-                                                      label = "Name of Variable",
+                                                      label = h4("Name of Variable"),
                                                       value = "Height"),
                                             numericInput("sampleSize",
-                                                         label = "Sample Size",
+                                                         label = h4("Sample Size"),
                                                          value=25),
                                             numericInput("numSamples",
-                                                         label = "Number of Samples",
+                                                         label = h4("Number of Samples"),
                                                          value=1),
-                                            actionButton("drawSample",label = "Draw Additional Samples"),
-                                            actionButton("resetMeanSample",label="Reset Samples"),
-                                            downloadButton("downloadSampleData","Download Sample Data")),
+                                            actionButton("drawSample",label = h4("Draw Additional Samples"),width = "220px"),
+                                            br(),
+                                            actionButton("resetMeanSample",label=h4("Reset Samples"),width = "150px"),
+                                            br(),
+                                            downloadButton("downloadSampleData",h4("Download Sample Data"))
+                               ), #/ sidebarPanel
                                # Show a plot of the generated distribution
                                mainPanel(
                                  fluidRow(
@@ -73,60 +76,224 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                  tableOutput("meansTable")
                                ))),
                     tabPanel(h4("Hypothesis Test Practice"),
-                             fluidRow(
-                               br(),
-                               column(width=3,
-                                      actionButton("newQuestion",label=h4("New Hypothesis Test Problem"))
-                               )
-                               ,
-                               # sidebarLayout(
-                               #   sidebarPanel(width=3,
-                               #     actionButton("newQuestion",label="New Hypothesis Test Problem")
-                               #   ),
-                               column(width=9,#withMathJax(),
-                                      # br(),
-                                      h3("Prompt:"),
-                                      h4(textOutput("prompt")),
-                                      fluidRow(column(width=9,h3("1) Null Hypothesis:"))),
-                                      fluidRow(column(width=1,h4(paste0(intToUtf8("0x03BC")," ="),
-                                                                 style="padding: 0px; width: 30px;")),
-                                               column(width=2,uiOutput("nullHypVal"),
-                                                      style="padding: 0px;"),
-                                               column(width=6,textOutput("nullHypFeedback"),
-                                                      style="padding: 0px;")),
-                                      fluidRow(column(width=9,h3("2) Alternative Hypothesis:"))),
-                                      fluidRow(column(width=1,h4(intToUtf8("0x03BC")),
-                                                      style="padding: 0px; width: 20px;"),
-                                               column(width=1,h4(uiOutput("altHypDir")),
-                                                      style="padding: 0px;"),
-                                               column(width=2,h4(uiOutput("altHypVal")),
-                                                      style="padding: 0px;"),
-                                               column(width=5,textOutput("altHypFeedback"),
-                                                      style="padding:0px;")),
-                                      fluidRow(column(width=9,h3("3) Test Statistic (within .1 of true value):"))),
-                                      fluidRow(column(width=1,h4("z ="),
-                                                      style="padding: 0px;"),
-                                               column(width=2,h4(uiOutput("testStat")),
-                                                      style="padding: 0px;"),
-                                               column(width=6,textOutput("testStatFeedback"),
-                                                      style="padding: 0px;")),
-                                      fluidRow(column(width=9,h3("4) Compare Test Statistic to Null Distribution:"))),
-                                      fluidRow(column(width=2,h4(uiOutput("testSize"))),
-                                               # div(style="display: inline-block;width: 75px;",h4(uiOutput("nullSD"))),
-                                               column(width=3,actionButton("plotNull",h4("Plot Null Distribution")),
-                                                      style="padding:0px;"),
-                                               column(width=4,textOutput("testSizeFeedback"),
-                                                      style="padding:0px;")),
-                                      plotlyOutput("nullDist",height="300px"),
-                                      fluidRow(column(width=9,h3("5) Decision:"))),
-                                      fluidRow(column(width=3,h4(uiOutput("decision")),
-                                                      style="padding:0px;"),
-                                               column(width=6,textOutput("decisionFeedback"),
-                                                      style="padding:0px;")),
-                                      h3("Problem Source:"),
-                                      h4(uiOutput("source"))#,
-                                      # fluidRow(column(width=9,h3("6) Conclusion:"))),
-                                      # fluidRow(column(width=2,h4("There is ")),
-                                      #          column(width=2,h4(uiOutput("conclusionSignif"))),
-                                      #          column(width=5,h4(" evidence to conclude that the true mean is ")))
-                               ))))))
+                             tags$head(
+                               tags$style(
+                                 HTML(
+                                   "
+                                   #inputs-table {
+                                   border-collapse: collapse;
+                                   }
+
+                                   #inputs-table td {
+                                   padding: 10px;
+                                   vertical-align: bottom;
+                                   }
+                                   "
+                                 ) #/ HTML
+                               ) #/ style
+                             ),
+                             tags$table(id = "inputs-table"
+                                        , style = "width: 100%; border-bottom: 2px solid black"
+                                        , tags$tr(
+                                          tags$td(style = "width: 20%; text-align: left; vertical-align: top; padding-top: 38px"
+                                                  , div(
+                                                    actionButton("newQuestion",label=h4("New Hypothesis Test Problem")
+                                                    ) #/ actionButton
+                                                  ) #/ div
+                                          ) #/ td
+                                          , tags$td(style = "width: 80%; text-align: left; vertical-align: top"
+                                                    , div(
+                                                      h3("Prompt:"),
+                                                      h4(textOutput("prompt"))
+                                                    ) #/ div
+                                          ) #/ td
+                                        )#/ tr
+                             ) #/ table
+                             ,tags$table(class = "col-md-11"
+                                         , style = "width: 100%"
+                                         , tags$tr(
+                                           tags$td(style = "width: 13%; vertical-align: middle; text-align: left"
+                                                   ,div(
+                                                     h4(paste0("1) Null Hypothesis: ",intToUtf8("0x03BC")," ="))
+                                                   ) #/ div
+                                           ) #/ td
+                                           , tags$td(style = "width: 5%; vertical-align: middle; text-align: left; padding-right: 10px"
+                                                     ,div(
+                                                       uiOutput("nullHypVal")
+                                                     ) #/ div
+                                           ) #/ td
+                                           , tags$td(style = "width: 82%; vertical-align: middle; text-align: left"
+                                                     ,div(
+                                                       h5(textOutput("nullHypFeedback"))
+                                                     ) #/ div
+                                           ) #/ td
+                                         ) #/ tr
+                             ) #/ table
+                             , tags$table(class = "col-md-11"
+                                          , style = "width: 100%"
+                                          , tags$tr(
+                                            tags$td(style = "width: 15%; vertical-align: middle; text-align: left;"
+                                                    ,div(
+                                                      h4(paste0("2) Alternative Hypothesis: ",intToUtf8("0x03BC")))
+                                                    ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 1%; vertical-align: middle; text-align: left"
+                                                      ,div(style = "width: 60px"
+                                                           , uiOutput("altHypDir")
+                                                      ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 1%; vertical-align: middle; text-align: left; padding-right: 10px; padding-bottom: 4px"
+                                                      ,div(uiOutput("altHypVal")
+                                                      ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 80%; vertical-align: middle; text-align: left"
+                                                      ,div(
+                                                        h5(textOutput("altHypFeedback"))
+                                                      ) #/ div
+                                            ) #/ td
+                                          ) #/ tr
+                             ) #/ table
+                             , tags$table(class = "col-md-11"
+                                          , style = "width: 100%"
+                                          , tags$tr(
+                                            tags$td(style = "width: 11%; vertical-align: middle; text-align: left"
+                                                    ,div(
+                                                      h4("3) Test Statistic: z = ")
+                                                    ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 1%; vertical-align: middle; text-align: left; padding-right: 10px; padding-bottom: 13px"
+                                                      , div(
+                                                        h4(uiOutput("testStat"))
+                                                      ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 87%; vertical-align: middle; text-align: left"
+                                                      , div(
+                                                        h5(textOutput("testStatFeedback"))
+                                                      ) #/ div
+                                            ) #/ td
+                                          ) #/ tr
+                             ) #/ table
+                             , tags$table(class = "col-md-11"
+                                          , style = "width: 100%"
+                                          , tags$tr(
+                                            tags$td(style = "width: 27%; vertical-align: middle; text-align: left"
+                                                    ,div(
+                                                      h4("4) Compare Test Statistic to Null Distribution: ")
+                                                    ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 3%; vertical-align: middle; text-align: left; padding-right: 10px"
+                                                      ,div(
+                                                        h4(uiOutput("testSize"))
+                                                      ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 10%; vertical-align: middle; text-align: left; padding-right: 10px"
+                                                      ,div(
+                                                        actionButton("plotNull",h4("Plot Null Distribution"))
+                                                      ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 60%; vertical-align: middle"
+                                                      ,div(
+                                                        h5(textOutput("testSizeFeedback"))
+                                                      ) #/ div
+                                            )
+                                          ) #/ tr
+                             ) #/ table
+                             , tags$table(class = "col-md-11",
+                                          style = "width: 100%"
+                                          , tags$tr(
+                                            tags$td(style = "width: 100%",
+                                                    plotlyOutput("nullDist",height="300px")
+                                            ) #/ td
+                                          ) #/ tr
+                             ) #/ table
+                             , tags$table(class = "col-md-11"
+                                          , style = "width: 100%"
+                                          , tags$tr(
+                                            tags$td(style = "width: 7%; vertical-align: middle; text-align: left"
+                                                    ,div(
+                                                      h4("5) Decision: ")
+                                                    ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 3%; vertical-align: middle; text-align: left; padding-right: 10px; padding-bottom: 10px"
+                                                      , div(style = "width: 200px",
+                                                            h4(uiOutput("decision"))
+                                                      ) #/ div
+                                            )
+                                            , tags$td(style = "width: 87%; vertical-align: middle"
+                                                      , div(
+                                                        h5(textOutput("decisionFeedback"))
+                                                      ) #/ div
+                                            )
+                                          ) #/ tr
+                             ) #/ table
+                             , tags$table(class = "col-md-11"
+                                          , style = "width: 100%"
+                                          , tags$tr(
+                                            tags$td(style = "width: 10%; vertical-align: middle; text-align: left"
+                                                    ,div(
+                                                      h4("Problem Source: ")
+                                                    ) #/ div
+                                            ) #/ td
+                                            , tags$td(style = "width: 90%; vertical-align: middle; text-align: left; padding-right: 10px"
+                                                      ,div(
+                                                        h4(uiOutput("source"))
+                                                      ) #/ div
+                                            ) #/ td
+                                          ) #/ tr
+                             ) #/ table
+                             ####### Old hypothesis test tab:
+                             # sidebarLayout(
+                             #   sidebarPanel(width=3,
+                             #     actionButton("newQuestion",label="New Hypothesis Test Problem")
+                             #   ),
+                             # column(width=9,#withMathJax(),
+                             #        # br(),
+                             #        h3("Prompt:"),
+                             #        h4(textOutput("prompt")),
+                             #        fluidRow(column(width=9,h3("1) Null Hypothesis:"))),
+                             #        fluidRow(column(width=1,h4(paste0(intToUtf8("0x03BC")," ="),
+                             #                                   style="padding: 0px; width: 30px;")),
+                             #                 column(width=2,uiOutput("nullHypVal"),
+                             #                        style="padding: 0px;"),
+                             #                 column(width=6,textOutput("nullHypFeedback"),
+                             #                        style="padding: 0px;")),
+                             #        fluidRow(column(width=9,h3("2) Alternative Hypothesis:"))),
+                             #        fluidRow(column(width=1,h4(intToUtf8("0x03BC")),
+                             #                        style="padding: 0px; width: 20px;"),
+                             #                 column(width=1,h4(uiOutput("altHypDir")),
+                             #                        style="padding: 0px;"),
+                             #                 column(width=2,h4(uiOutput("altHypVal")),
+                             #                        style="padding: 0px;"),
+                             #                 column(width=5,textOutput("altHypFeedback"),
+                             #                        style="padding:0px;")),
+                             #        fluidRow(column(width=9,h3("3) Test Statistic (within .1 of true value):"))),
+                             #        fluidRow(column(width=1,h4("z ="),
+                             #                        style="padding: 0px;"),
+                             #                 column(width=2,h4(uiOutput("testStat")),
+                             #                        style="padding: 0px;"),
+                             #                 column(width=6,textOutput("testStatFeedback"),
+                             #                        style="padding: 0px;")),
+                             #        fluidRow(column(width=9,h3("4) Compare Test Statistic to Null Distribution:"))),
+                             #        fluidRow(column(width=2,h4(uiOutput("testSize"))),
+                             #                 # div(style="display: inline-block;width: 75px;",h4(uiOutput("nullSD"))),
+                             #                 column(width=3,actionButton("plotNull",h4("Plot Null Distribution")),
+                             #                        style="padding:0px;"),
+                             #                 column(width=4,textOutput("testSizeFeedback"),
+                             #                        style="padding:0px;")),
+                             #        plotlyOutput("nullDist",height="300px"),
+                             #        fluidRow(column(width=9,h3("5) Decision:"))),
+                             #        fluidRow(column(width=3,h4(uiOutput("decision")),
+                             #                        style="padding:0px;"),
+                             #                 column(width=6,textOutput("decisionFeedback"),
+                             #                        style="padding:0px;")),
+                             #        h3("Problem Source:"),
+                             #        h4(uiOutput("source"))#,
+                             #        # fluidRow(column(width=9,h3("6) Conclusion:"))),
+                             #        # fluidRow(column(width=2,h4("There is ")),
+                             #        #          column(width=2,h4(uiOutput("conclusionSignif"))),
+                             #        #          column(width=5,h4(" evidence to conclude that the true mean is ")))
+                             # )
+                    )
+                  )
+)
+)

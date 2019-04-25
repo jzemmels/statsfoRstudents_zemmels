@@ -37,7 +37,7 @@ plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800
 
   plt <- ggplot(as.data.frame(x), aes(x)) +
     stat_function(fun = dnorm,args=list(mean=mu,sd=sigma)) +
-    geom_vline(xintercept = obs,colour="darkgreen",linetype="dashed")
+    theme_bw()
 
   if(direction == intToUtf8("8800")){ #two-sided. intToUtf8("8800") is not-equal-to
     plt <- plt +
@@ -60,6 +60,9 @@ plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800
                     xlim = c(min(x),qnorm(mean = mu,sd=sigma,p = alpha)),
                     geom = "area")
   }
+
+  plt <- plt +
+    geom_vline(xintercept = obs,colour="blue",linetype="dashed",size=2) #add observation to plot as top layer
 
   if(plotly){ #turns ggplot into plotly object
     plt <- ggplotly(plt)

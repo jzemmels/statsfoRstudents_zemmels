@@ -145,7 +145,8 @@ server <- function(input, output, session) {
   output$altHypVal <- renderUI({
     numericInput("altVal",
                  label = "",
-                 value = NULL)
+                 value = NULL,
+                 width="100px")
   })
 
   output$altHypDir <- renderUI({
@@ -180,7 +181,8 @@ server <- function(input, output, session) {
   output$testStat <- renderUI({
     numericInput("hypTestStat",
                  label="",
-                 value = NULL)
+                 value = NULL,
+                 width = "100px")
   })
 
   output$testStatFeedback <- renderText({
@@ -193,8 +195,9 @@ server <- function(input, output, session) {
 
   output$testSize <- renderUI({
     numericInput("signifLevel",
-                 label="Signifance Level",
-                 value = NULL)
+                 label="Signif. Level",
+                 value = NULL,
+                 width = "130px")
   })
 
   output$testSizeFeedback <- renderText({
