@@ -40,7 +40,7 @@ test_that("output is checked",{
 
 test_that("output is checked",{
   expect_class(ploterrors(direction = "<"),"list")})
-
+#
 
 
 
