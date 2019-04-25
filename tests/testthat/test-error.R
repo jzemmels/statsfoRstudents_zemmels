@@ -29,10 +29,17 @@ test_that("plotlw output is checked",{
 })
 
 
-
-
 test_that("output is checked",{
   expect_class(ploterrors(),"list")})
+
+#testing  >
+test_that("output is checked",{
+  expect_class(ploterrors(direction = ">"),"list")})
+
+#testing <
+
+test_that("output is checked",{
+  expect_class(ploterrors(direction = "<"),"list")})
 
 
 
