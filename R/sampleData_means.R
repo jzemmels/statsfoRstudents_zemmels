@@ -8,3 +8,4 @@
 #' }
 #'
 #' @source \url{https://github.com/jzemmels/finalProject/blob/master/R/meanSamplingDistribution.R}
+"sampleData_means"

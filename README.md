@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-STAT 585 Final Project
-======================
+STAT 585 Final Project: statsfoRdummies package/shiny app
+---------------------------------------------------------
 
 [![Coverage status](https://codecov.io/gh/jzemmels/finalProject/branch/master/graph/badge.svg)](https://codecov.io/github/jzemmels/finalProject?branch=master)
 
