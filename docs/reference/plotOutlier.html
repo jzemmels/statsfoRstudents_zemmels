@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create/update a data frame of sample means — updateSampleMeans • finalProject</title>
+<title>Plot a random distribution with differing outliers — plotOutlier • finalProject</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Create/update a data frame of sample means — updateSampleMeans" />
+<meta property="og:title" content="Plot a random distribution with differing outliers — plotOutlier" />
 
-<meta property="og:description" content="Creates or updates a data frame of sample means from a randomSample object passed to it" />
+<meta property="og:description" content="Returns a ggplot object of a certain type of outlier (none, one, multiple)" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,47 +111,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create/update a data frame of sample means</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jzemmels/finalProject/blob/master/R/meanSamplingDistribution.R'><code>R/meanSamplingDistribution.R</code></a></small>
-    <div class="hidden name"><code>updateSampleMeans.Rd</code></div>
+    <h1>Plot a random distribution with differing outliers</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jzemmels/finalProject/blob/master/R/plotOutlier.R'><code>R/plotOutlier.R</code></a></small>
+    <div class="hidden name"><code>plotOutlier.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates or updates a data frame of sample means from a randomSample object passed to it</p>
+    <p>Returns a ggplot object of a certain type of outlier (none, one, multiple)</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>updateSampleMeans</span>(<span class='no'>sampleData</span>, <span class='kw'>sampleMeans</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>plotOutlier</span>(<span class='kw'>randomDist</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>sampleData</th>
-      <td><p>data frame of random samples from a normal distribution</p></td>
-    </tr>
-    <tr>
-      <th>sampleMeans</th>
-      <td><p>data frame of sample means (empty data frame is initialized if this is argument is blank)</p></td>
+      <th>randomDist</th>
+      <td><p>Randomly generated number to signify type of distribution</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame of sample means from each sample in randomSample</p>
+    <p>A list consisting of one character string and a ggplot object</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='randomSample.html'>randomSample</a></span>(<span class='kw'>numSamples</span><span class='kw'>=</span><span class='fl'>100</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'>updateSampleMeans</span>(<span class='kw'>sampleData</span><span class='kw'>=</span><span class='no'>dat</span>))</div><div class='output co'>#&gt;          means
-#&gt; X1  0.08525375
-#&gt; X2  0.21303832
-#&gt; X3  0.13253399
-#&gt; X4  0.11453943
-#&gt; X5 -0.17350052
-#&gt; X6 -0.54077015</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -159,12 +145,10 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
     <h2>Author</h2>
-    <p>Joe Zemmels</p>
+    <p>Charlotte Roiger</p>
   </div>
 </div>
 

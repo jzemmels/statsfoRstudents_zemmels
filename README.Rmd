@@ -12,14 +12,11 @@ output: github_document
 install.packages("finalProject")
 ```
 
-To run the shiny apps in this package, run the following:
+The function of this package is mainly in-service to the shiny app that accompanies it. To run this shiny app, run the following code:
 
 ```{r eval=FALSE}
-runShinyApp() #to see a list of launchable apps in the inst/shiny-examples folder
-runShinyApp("joe") #to launch Joe's shiny app
-runShinyApp("charlotte") # laung Charlotte's very sad app
+shiny::runApp(appDir = "inst/shiny")
 ```
-
 
 Gulzina and Eryn have functions in the R folder that haven't yet been implemented into a Shiny app, so you can give them feedback based on those.
 

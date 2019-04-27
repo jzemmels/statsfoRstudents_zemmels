@@ -2,10 +2,40 @@ library(shiny)
 library(plotly)
 library(finalProject)
 library(shinyjs)
-
+#library(tidyverse)
+library(dplyr)
+#library(checkmate)
 
 shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                   tabsetPanel(#widths=c(2,10),
+                    tabPanel(title = h4("Eryn's Shiny App")),
+                    tabPanel(title = h4("Gulzina's Shiny App")),
+                    tabPanel(title = h4("Histogram Description Testing"),
+                             sidebarPanel(
+                               actionButton("redo", "New Distribution")
+                             ),
+                             mainPanel(
+                               tabsetPanel(
+                                 tabPanel("Modality",
+                                          plotOutput("plotModal"),
+                                          uiOutput("aspectModal")
+
+                                 ),
+                                 tabPanel("Shape",
+
+                                          plotOutput("plotShape"),
+                                          uiOutput("aspectShape")
+                                 ),
+                                 tabPanel("Outlier",
+
+                                          plotOutput("plotOutlier"),
+                                          uiOutput("aspectOutlier")
+                                          # textOutput("feedback")
+                                 )
+
+                               )
+                             )
+                    ),
                     tabPanel(h4("Normal Plot"),
                              sidebarLayout(
                                sidebarPanel(width=3,
@@ -250,7 +280,7 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
 
 
 
-####### Joe's old hypothesis test tab:
+####### Joe's old hypothesis test tab. Only madness lies past here.
 # sidebarLayout(
 #   sidebarPanel(width=3,
 #     actionButton("newQuestion",label="New Hypothesis Test Problem")

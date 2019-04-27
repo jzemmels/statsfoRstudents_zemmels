@@ -39,4 +39,7 @@ Imports:
     rlang,
     shinyjs
 Suggests:
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
