@@ -9,7 +9,7 @@
 \item{means}{mean of each sample}
 }}
 \source{
-\url{https://github.com/jzemmels/finalProject/blob/master/R/meanSamplingDistribution.R}
+\url{https://github.com/jzemmels/statsfoRdummies/blob/master/R/meanSamplingDistribution.R}
 }
 \usage{
 sampleData_means

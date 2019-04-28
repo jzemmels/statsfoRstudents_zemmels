@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot a normal distribution — plotNormal • statsfoRdummies</title>
+<title>Sample means of 100 normal random samples — sampleData_means • statsfoRdummies</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Plot a normal distribution — plotNormal" />
+<meta property="og:title" content="Sample means of 100 normal random samples — sampleData_means" />
 
-<meta property="og:description" content="Returns a ggplot or plotly object of a normal distribution with a specified significance level" />
+<meta property="og:description" content="A dataset containing the sample means of 100 normal random samples of sample size 25. Can be plotted using the sampleMeans_histogram() function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,69 +111,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot a normal distribution</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jzemmels/finalProject/blob/master/R/plotNormal.R'><code>R/plotNormal.R</code></a></small>
-    <div class="hidden name"><code>plotNormal.Rd</code></div>
+    <h1>Sample means of 100 normal random samples</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jzemmels/finalProject/blob/master/R/sampleData_means.R'><code>R/sampleData_means.R</code></a></small>
+    <div class="hidden name"><code>sampleData_means.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Returns a ggplot or plotly object of a normal distribution with a specified significance level</p>
+    <p>A dataset containing the sample means of 100 normal random samples of sample size 25. Can be plotted using the sampleMeans_histogram() function.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plotNormal</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>obs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>direction</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/utf8Conversion'>intToUtf8</a></span>(<span class='st'>"8800"</span>), <span class='kw'>plotly</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>mu</th>
-      <td><p>mean of normal distribution</p></td>
-    </tr>
-    <tr>
-      <th>sigma</th>
-      <td><p>standard deviation of normal distribution</p></td>
-    </tr>
-    <tr>
-      <th>alpha</th>
-      <td><p>significance level</p></td>
-    </tr>
-    <tr>
-      <th>obs</th>
-      <td><p>observed z-statistic (randomly generated if left blank)</p></td>
-    </tr>
-    <tr>
-      <th>direction</th>
-      <td><p>direction of alternative hypothesis</p></td>
-    </tr>
-    <tr>
-      <th>plotly</th>
-      <td><p>specifies whether a plotly object is desired</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>sampleData_means</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A ggplot or plotly object, depending on whether the plotly argument was specified TRUE or FALSE.</p>
+    <p>A data frame of one column with 100 rows:</p><dl class='dl-horizontal'>
+<dt>means</dt><dd><p>mean of each sample</p></dd>
+</dl>
+    
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://github.com/jzemmels/statsfoRdummies/blob/master/R/meanSamplingDistribution.R'>https://github.com/jzemmels/statsfoRdummies/blob/master/R/meanSamplingDistribution.R</a></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>plotNormal</span>() <span class='co'>#default standard normal ggplot</span></div><div class='img'><img src='plotNormal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotNormal</span>(<span class='kw'>mu</span><span class='kw'>=</span><span class='fl'>5</span>,<span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>2</span>,<span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>.1</span>,<span class='kw'>obs</span><span class='kw'>=</span><span class='fl'>.5</span>,<span class='kw'>plotly</span><span class='kw'>=</span><span class='fl'>TRUE</span>) <span class='co'>#customized plotly</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#format">Format</a></li>
 
-    <h2>Author</h2>
-    <p>Joe Zemmels</p>
+      <li><a href="#source">Source</a></li>
+          </ul>
+
   </div>
 </div>
 

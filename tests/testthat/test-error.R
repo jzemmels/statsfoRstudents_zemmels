@@ -1,7 +1,7 @@
 context("test-error")
 
-plt <- finalProject::ploterrors()
-pltly <- finalProject::ploterrors(plotly = TRUE)
+plt <- ploterrors()
+pltly <- ploterrors(plotly = TRUE)
 
 test_that("arguments are checked", {
   expect_error(ploterrors(means="a"))

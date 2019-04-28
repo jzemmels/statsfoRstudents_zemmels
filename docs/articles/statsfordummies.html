@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>statsfoRdummies • finalProject</title>
+<title>statsfoRdummies • statsfoRdummies</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">finalProject</a>
+        <a class="navbar-link" href="../index.html">statsfoRdummies</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
@@ -80,7 +80,7 @@
       <h1>statsfoRdummies</h1>
                         <h4 class="author">Eryn Blagg, Gulzina Kuttubekova, Charlotte Roiger, Joe Zemmels</h4>
             
-            <h4 class="date">2019-04-26</h4>
+            <h4 class="date">2019-04-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jzemmels/finalProject/blob/master/vignettes/statsfordummies.Rmd"><code>vignettes/statsfordummies.Rmd</code></a></small>
       <div class="hidden name"><code>statsfordummies.Rmd</code></div>
@@ -89,210 +89,43 @@
 
     
     
-<p>Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The <code>html_vignette</code> output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The <code>html_vignette</code> format:</p>
-<ul>
-<li>Never uses retina figures</li>
-<li>Has a smaller default figure size</li>
-<li>Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style</li>
-</ul>
-<div id="vignette-info" class="section level2">
+<p>While this vignette will show how the various functions within this package can be used from the console, the purpose of this package is mainly in-service to the shiny app that accompanies it. It is highly recommended to first launch the shiny app to follow along with this vignette. You can launch the app by running the following in your console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runApp">runApp</a></span>(<span class="dt">appDir =</span> <span class="st">"statsfoRdummies/inst/shiny"</span>)</code></pre></div>
+<div id="eryn" class="section level2">
 <h2 class="hasAnchor">
-<a href="#vignette-info" class="anchor"></a>Vignette Info</h2>
-<p>Note the various macros within the <code>vignette</code> section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the <code>title</code> field and the <code>\VignetteIndexEntry</code> to match the title of your vignette.</p>
+<a href="#eryn" class="anchor"></a>Eryn</h2>
 </div>
-<div id="styles" class="section level2">
+<div id="gulzina" class="section level2">
 <h2 class="hasAnchor">
-<a href="#styles" class="anchor"></a>Styles</h2>
-<p>The <code>html_vignette</code> template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:</p>
-<pre><code>output: 
-  rmarkdown::html_vignette:
-    css: mystyles.css</code></pre>
+<a href="#gulzina" class="anchor"></a>Gulzina</h2>
 </div>
-<div id="figures" class="section level2">
+<div id="charlotte" class="section level2">
 <h2 class="hasAnchor">
-<a href="#figures" class="anchor"></a>Figures</h2>
-<p>The figure sizes have been customised so that you can easily put two images side-by-side.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="statsfordummies_files/figure-html/unnamed-chunk-1-1.png" width="700"><img src="statsfordummies_files/figure-html/unnamed-chunk-1-2.png" width="700"></p>
-<p>You can enable figure captions by <code>fig_caption: yes</code> in YAML:</p>
-<pre><code>output:
-  rmarkdown::html_vignette:
-    fig_caption: yes</code></pre>
-<p>Then you can use the chunk option <code>fig.cap = "Your figure caption."</code> in <strong>knitr</strong>.</p>
+<a href="#charlotte" class="anchor"></a>Charlotte</h2>
 </div>
-<div id="more-examples" class="section level2">
+<div id="joe" class="section level2">
 <h2 class="hasAnchor">
-<a href="#more-examples" class="anchor"></a>More Examples</h2>
-<p>You can write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>.</p>
-<table class="table">
-<thead><tr class="header">
-<th></th>
-<th align="right">mpg</th>
-<th align="right">cyl</th>
-<th align="right">disp</th>
-<th align="right">hp</th>
-<th align="right">drat</th>
-<th align="right">wt</th>
-<th align="right">qsec</th>
-<th align="right">vs</th>
-<th align="right">am</th>
-<th align="right">gear</th>
-<th align="right">carb</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Mazda RX4</td>
-<td align="right">21.0</td>
-<td align="right">6</td>
-<td align="right">160.0</td>
-<td align="right">110</td>
-<td align="right">3.90</td>
-<td align="right">2.620</td>
-<td align="right">16.46</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td>Mazda RX4 Wag</td>
-<td align="right">21.0</td>
-<td align="right">6</td>
-<td align="right">160.0</td>
-<td align="right">110</td>
-<td align="right">3.90</td>
-<td align="right">2.875</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td>Datsun 710</td>
-<td align="right">22.8</td>
-<td align="right">4</td>
-<td align="right">108.0</td>
-<td align="right">93</td>
-<td align="right">3.85</td>
-<td align="right">2.320</td>
-<td align="right">18.61</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td>Hornet 4 Drive</td>
-<td align="right">21.4</td>
-<td align="right">6</td>
-<td align="right">258.0</td>
-<td align="right">110</td>
-<td align="right">3.08</td>
-<td align="right">3.215</td>
-<td align="right">19.44</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td>Hornet Sportabout</td>
-<td align="right">18.7</td>
-<td align="right">8</td>
-<td align="right">360.0</td>
-<td align="right">175</td>
-<td align="right">3.15</td>
-<td align="right">3.440</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td>Valiant</td>
-<td align="right">18.1</td>
-<td align="right">6</td>
-<td align="right">225.0</td>
-<td align="right">105</td>
-<td align="right">2.76</td>
-<td align="right">3.460</td>
-<td align="right">20.22</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td>Duster 360</td>
-<td align="right">14.3</td>
-<td align="right">8</td>
-<td align="right">360.0</td>
-<td align="right">245</td>
-<td align="right">3.21</td>
-<td align="right">3.570</td>
-<td align="right">15.84</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td>Merc 240D</td>
-<td align="right">24.4</td>
-<td align="right">4</td>
-<td align="right">146.7</td>
-<td align="right">62</td>
-<td align="right">3.69</td>
-<td align="right">3.190</td>
-<td align="right">20.00</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td>Merc 230</td>
-<td align="right">22.8</td>
-<td align="right">4</td>
-<td align="right">140.8</td>
-<td align="right">95</td>
-<td align="right">3.92</td>
-<td align="right">3.150</td>
-<td align="right">22.90</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td>Merc 280</td>
-<td align="right">19.2</td>
-<td align="right">6</td>
-<td align="right">167.6</td>
-<td align="right">123</td>
-<td align="right">3.92</td>
-<td align="right">3.440</td>
-<td align="right">18.30</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-</tbody>
-</table>
-<p>Also a quote using <code>&gt;</code>:</p>
-<blockquote>
-<p>“He who gives up [code] safety for [code] speed deserves neither.” (<a href="https://twitter.com/hadleywickham/status/504368538874703872">via</a>)</p>
-</blockquote>
+<a href="#joe" class="anchor"></a>Joe</h2>
+<p>Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorized the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their <span class="math inline">\(z\)</span>-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I had the idea to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative distribution direction, and plot an observed <span class="math inline">\(z\)</span>-statistic. I believed that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density might lead to a deeper understanding than simply checking whether the <span class="math inline">\(p\)</span>-value is less than .05.</p>
+<div id="plotnormal" class="section level3">
+<h3 class="hasAnchor">
+<a href="#plotnormal" class="anchor"></a>plotNormal()</h3>
+<p>The function <span class="math inline">\(\texttt{plotNormal()}\)</span> allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the signficance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not possible to show in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.</p>
+<p>The intent of this function is to give the user a way to visually determine whether their observed value falls in the critical region. This function is used by itself in the “Normal Plot” tab of the shiny app, but I believe its most useful inclusion is in the “Hypothesis Test Challenge” tab.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotNormal.html">plotNormal</a></span>(<span class="dt">mu=</span><span class="dv">2</span>,<span class="dt">sigma=</span><span class="dv">4</span>,<span class="dt">alpha=</span>.<span class="dv">1</span>,<span class="dt">obs=</span><span class="dv">3</span>,<span class="dt">direction=</span><span class="st">"&lt;"</span>,<span class="dt">plotly =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="statsfordummies_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
+<p>Below is a snapshot of the usage of <span class="math inline">\(\texttt{plotNormal()}\)</span> in the “Normal Plot” tab of the shiny app.</p>
+<p><img src="../../../../../Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/normalDistributionShinyPic.JPG" width="700"></p>
 </div>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>A footnote here.<a href="#fnref1">↩</a></p></li>
-</ol>
+<div id="hypothesis-test-challenge" class="section level3">
+<h3 class="hasAnchor">
+<a href="#hypothesis-test-challenge" class="anchor"></a>Hypothesis Test Challenge</h3>
+<p>Similar to the moviation behing the <span class="math inline">\(\texttt{plotNormal()}\)</span> function, another idea that I had was to make a Madlibs-style hypothesis test “game” in which students could practice the hypothesis test procedure while receiving real-time feedback.</p>
+</div>
+<div id="sampling-distribution-of-sample-means-visualization-tool" class="section level3">
+<h3 class="hasAnchor">
+<a href="#sampling-distribution-of-sample-means-visualization-tool" class="anchor"></a>Sampling Distribution of Sample Means Visualization Tool</h3>
+</div>
 </div>
   </div>
 
@@ -301,10 +134,10 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#vignette-info">Vignette Info</a></li>
-      <li><a href="#styles">Styles</a></li>
-      <li><a href="#figures">Figures</a></li>
-      <li><a href="#more-examples">More Examples</a></li>
+<li><a href="#eryn">Eryn</a></li>
+      <li><a href="#gulzina">Gulzina</a></li>
+      <li><a href="#charlotte">Charlotte</a></li>
+      <li><a href="#joe">Joe</a></li>
       </ul>
 </div>
       </div>

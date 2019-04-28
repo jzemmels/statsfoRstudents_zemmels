@@ -3,63 +3,50 @@ title: "statsfoRdummies"
 author: "Eryn Blagg, Gulzina Kuttubekova, Charlotte Roiger, Joe Zemmels"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+geometry: margin=1cm
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+```{r echo=FALSE}
+library(statsfoRdummies)
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+While this vignette will show how the various functions within this package can be used from the console, the purpose of this package is mainly in-service to the shiny app that accompanies it. It is highly recommended to first launch the shiny app to follow along with this vignette. You can launch the app by running the following in your console.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
-## Vignette Info
-
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r eval=FALSE}
+shiny::runApp(appDir = "statsfoRdummies/inst/shiny")
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## Eryn
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+## Gulzina
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+## Charlotte
 
-## More Examples
+## Joe
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorized the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their $z$-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I had the idea to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative distribution direction, and plot an observed $z$-statistic. I believed that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density  might lead to a deeper understanding than simply checking whether the $p$-value is less than .05.
 
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+### plotNormal()
+
+The function $\texttt{plotNormal()}$ allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the signficance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not possible to show in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.
+
+The intent of this function is to give the user a way to visually determine whether their observed value falls in the critical region. This function is used by itself in the "Normal Plot" tab of the shiny app, but I believe its most useful inclusion is in the "Hypothesis Test Challenge" tab.
+
+```{r fig.height=3,fig.width=4}
+plotNormal(mu=2,sigma=4,alpha=.1,obs=3,direction="<",plotly = FALSE)
 ```
 
-Also a quote using `>`:
+Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot" tab of the shiny app.
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+<img src="images/normalDistributionShinyPic.JPG" width="700">
+
+### Hypothesis Test Challenge
+
+Similar to the moviation behing the $\texttt{plotNormal()}$ function, another idea that I had was to make a Madlibs-style hypothesis test "game" in which students could practice the hypothesis test procedure while receiving real-time feedback.
+
+### Sampling Distribution of Sample Means Visualization Tool
+

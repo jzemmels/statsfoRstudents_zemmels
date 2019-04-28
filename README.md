@@ -12,7 +12,7 @@ install.packages("finalProject")
 The function of this package is mainly in-service to the shiny app that accompanies it. To run this shiny app, run the following code:
 
 ``` r
-shiny::runApp(appDir = "inst/shiny")
+shiny::runApp(appDir = "finalProject/inst/shiny")
 ```
 
 Gulzina and Eryn have functions in the R folder that haven't yet been implemented into a Shiny app, so you can give them feedback based on those.

@@ -5,7 +5,7 @@ library(dplyr)
 library(praise)
 #library(tidyverse)
 #library(checkmate)
-library(finalProject)
+library(statsfoRdummies)
 
 # Define server logic
 

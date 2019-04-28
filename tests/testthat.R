@@ -1,4 +1,4 @@
 library(testthat)
-library(finalProject)
+library(statsfoRdummies)
 
-test_check("finalProject")
+test_check("statsfoRdummies")

@@ -1,6 +1,6 @@
 library(shiny)
 library(plotly)
-library(finalProject)
+library(statsfoRdummies)
 library(shinyjs)
 
 

@@ -3,5 +3,5 @@
 ^docs$
 ^_pkgdown\.yml$
 ^README\.Rmd$
-^finalProject\.Rproj$
+^statsfoRdummies\.Rproj$
 ^\.Rproj\.user$

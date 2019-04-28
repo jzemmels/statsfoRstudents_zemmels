@@ -1,6 +1,6 @@
 library(shiny)
 library(plotly)
-library(finalProject)
+library(statsfoRdummies)
 library(shinyjs)
 #library(tidyverse)
 library(dplyr)
@@ -64,46 +64,6 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                # Show a plot of the generated distribution
                                mainPanel(
                                  plotlyOutput(outputId = "distPlot",height="700px")
-                               ))),
-                    tabPanel(h4("Sampling Distribution of Sample Means"),
-                             sidebarLayout(
-                               sidebarPanel(width=3,selectInput("distributionType",
-                                                                label=h4("Population Shape"),
-                                                                choices = list("Normal",
-                                                                               "Another Option"),
-                                                                selected="Normal"),
-                                            numericInput("sampleDist_mu",
-                                                         label = h4("Population Mean"),
-                                                         value=0),
-                                            numericInput("sampleDist_sigma",
-                                                         label = h4("Population Standard Deviation"),
-                                                         value=1),
-                                            textInput("name",
-                                                      label = h4("Name of Variable"),
-                                                      value = "Height"),
-                                            numericInput("sampleSize",
-                                                         label = h4("Sample Size"),
-                                                         value=25),
-                                            numericInput("numSamples",
-                                                         label = h4("Number of Samples"),
-                                                         value=1),
-                                            actionButton("drawSample",label = h4("Draw Additional Samples"),width = "220px"),
-                                            br(),
-                                            actionButton("resetMeanSample",label=h4("Reset Samples"),width = "150px"),
-                                            br(),
-                                            downloadButton("downloadSampleData",h4("Download Sample Data"))
-                               ), #/ sidebarPanel
-                               # Show a plot of the generated distribution
-                               mainPanel(
-                                 fluidRow(
-                                   h4("Distribution of Sample Data:"),
-                                   column(7,plotlyOutput(outputId = "randomSampleDist",height = "300px")),
-                                   h4("Sample Summary Table:"),
-                                   column(5,tableOutput("randomSampleTable"))),
-                                 h4("Distribution of Sample Means:"),
-                                 plotlyOutput(outputId = "meanSamplingDist",height="300px"),
-                                 h4("Means Summary Table:"),
-                                 tableOutput("meansTable")
                                ))),
                     tabPanel(h4("Hypothesis Test Challenge"),
                              tags$head(
@@ -271,7 +231,48 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                             ) #/ td
                                           ) #/ tr
                              ) #/ table
-                    )
+                    ),
+
+                    tabPanel(h4("Sampling Distribution of Sample Means"),
+                             sidebarLayout(
+                               sidebarPanel(width=3,selectInput("distributionType",
+                                                                label=h4("Population Shape"),
+                                                                choices = list("Normal",
+                                                                               "Another Option"),
+                                                                selected="Normal"),
+                                            numericInput("sampleDist_mu",
+                                                         label = h4("Population Mean"),
+                                                         value=0),
+                                            numericInput("sampleDist_sigma",
+                                                         label = h4("Population Standard Deviation"),
+                                                         value=1),
+                                            textInput("name",
+                                                      label = h4("Name of Variable"),
+                                                      value = "Height"),
+                                            numericInput("sampleSize",
+                                                         label = h4("Sample Size"),
+                                                         value=25),
+                                            numericInput("numSamples",
+                                                         label = h4("Number of Samples"),
+                                                         value=1),
+                                            actionButton("drawSample",label = h4("Draw Additional Samples"),width = "220px"),
+                                            br(),
+                                            actionButton("resetMeanSample",label=h4("Reset Samples"),width = "150px"),
+                                            br(),
+                                            downloadButton("downloadSampleData",h4("Download Sample Data"))
+                               ), #/ sidebarPanel
+                               # Show a plot of the generated distribution
+                               mainPanel(
+                                 fluidRow(
+                                   h4("Distribution of Sample Data:"),
+                                   column(7,plotlyOutput(outputId = "randomSampleDist",height = "300px")),
+                                   h4("Sample Summary Table:"),
+                                   column(5,tableOutput("randomSampleTable"))),
+                                 h4("Distribution of Sample Means:"),
+                                 plotlyOutput(outputId = "meanSamplingDist",height="300px"),
+                                 h4("Means Summary Table:"),
+                                 tableOutput("meansTable")
+                               )))
                   )
 )
 )

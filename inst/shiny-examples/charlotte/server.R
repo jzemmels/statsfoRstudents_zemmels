@@ -2,7 +2,7 @@ library(tidyverse)
 library(dplyr)
 library(shiny)
 library(checkmate)
-library(finalProject)
+library(statsfoRdummies)
 
 server <- function(input, output) {
   output$aspectModal <- renderUI({
