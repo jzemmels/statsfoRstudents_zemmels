@@ -80,7 +80,7 @@
       <h1>statsfoRdummies</h1>
                         <h4 class="author">Eryn Blagg, Gulzina Kuttubekova, Charlotte Roiger, Joe Zemmels</h4>
             
-            <h4 class="date">2019-04-27</h4>
+            <h4 class="date">2019-04-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jzemmels/finalProject/blob/master/vignettes/statsfordummies.Rmd"><code>vignettes/statsfordummies.Rmd</code></a></small>
       <div class="hidden name"><code>statsfordummies.Rmd</code></div>
@@ -89,8 +89,17 @@
 
     
     
-<p>While this vignette will show how the various functions within this package can be used from the console, the purpose of this package is mainly in-service to the shiny app that accompanies it. It is highly recommended to first launch the shiny app to follow along with this vignette. You can launch the app by running the following in your console.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runApp">runApp</a></span>(<span class="dt">appDir =</span> <span class="st">"statsfoRdummies/inst/shiny"</span>)</code></pre></div>
+<style type="text/css">
+.main-container {
+  max-width: 2500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<p>You can install the <span class="math inline">\(\texttt{statsfoRdummies}\)</span> package by running the following in your console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"https://github.com/jzemmels/statsfoRdummies"</span>)</code></pre></div>
+<p>While this vignette will show how the various functions within this package can be used from the console, the purpose of this package is mainly in-service to the shiny app that accompanies it. It is highly recommended to first launch the shiny app to follow along with this vignette. Assuming that you are in the package directory, you can launch the app by running the following in your console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runApp">runApp</a></span>(<span class="dt">appDir =</span> <span class="st">"inst/shiny"</span>)</code></pre></div>
 <div id="eryn" class="section level2">
 <h2 class="hasAnchor">
 <a href="#eryn" class="anchor"></a>Eryn</h2>
@@ -113,18 +122,89 @@
 <p>The function <span class="math inline">\(\texttt{plotNormal()}\)</span> allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the signficance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not possible to show in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.</p>
 <p>The intent of this function is to give the user a way to visually determine whether their observed value falls in the critical region. This function is used by itself in the “Normal Plot” tab of the shiny app, but I believe its most useful inclusion is in the “Hypothesis Test Challenge” tab.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotNormal.html">plotNormal</a></span>(<span class="dt">mu=</span><span class="dv">2</span>,<span class="dt">sigma=</span><span class="dv">4</span>,<span class="dt">alpha=</span>.<span class="dv">1</span>,<span class="dt">obs=</span><span class="dv">3</span>,<span class="dt">direction=</span><span class="st">"&lt;"</span>,<span class="dt">plotly =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="statsfordummies_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
-<p>Below is a snapshot of the usage of <span class="math inline">\(\texttt{plotNormal()}\)</span> in the “Normal Plot” tab of the shiny app.</p>
-<p><img src="../../../../../Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/normalDistributionShinyPic.JPG" width="700"></p>
+<p><img src="statsfordummies_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<!--
+Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot" tab of the shiny app.
+
+<img src="C:/Users/Joe/Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/normalDistributionShinyPic.JPG" width="700">
+-->
 </div>
 <div id="hypothesis-test-challenge" class="section level3">
 <h3 class="hasAnchor">
 <a href="#hypothesis-test-challenge" class="anchor"></a>Hypothesis Test Challenge</h3>
-<p>Similar to the moviation behing the <span class="math inline">\(\texttt{plotNormal()}\)</span> function, another idea that I had was to make a Madlibs-style hypothesis test “game” in which students could practice the hypothesis test procedure while receiving real-time feedback.</p>
+<p>Along with the <span class="math inline">\(\texttt{plotNormal()}\)</span> function, another idea that I had was to make a Madlibs-style hypothesis test “game” in which students could practice the hypothesis test procedure while receiving real-time feedback. This is implemented in the “Hypothesis Test Challenge” tab of the shiny app. Under the hood, this app is simply making a call to a function I wrote, <span class="math inline">\(\texttt{hypTest_prompt()}\)</span>, that randomly selects from a collection of hypothesis test prompts. Below is one example of using the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">4282019</span>)
+<span class="kw"><a href="../reference/hypTest_prompt.html">hypTest_prompt</a></span>()</code></pre></div>
+<pre><code>## $prompt
+## [1] "Blood glucose levels for obese patients have a mean of 100 with a standard deviation of 15. A researcher thinks that a diet high in raw cornstarch will have a positive or negative effect on blood glucose levels. A sample of 30 patients who have tried the raw cornstarch diet have a mean glucose level of 140. Test the hypothesis that the raw cornstarch had an effect if alpha = .05."
+## 
+## $nullVal
+## [1] 100
+## 
+## $altDir
+## [1] "&lt;U+2260&gt;"
+## 
+## $altVal
+## [1] 100
+## 
+## $testStat
+## [1] 14.60593
+## 
+## $signifLevel
+## [1] 0.05
+## 
+## $decision
+## [1] "Reject Null"
+## 
+## $source
+## [1] "https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/hypothesis-testing/#HTExamples"</code></pre>
+<p>The shiny app uses shiny’s <span class="math inline">\(\texttt{renderUI()}\)</span> function to generate select/numeric input objects with which the user can interact. The app will give feedback based on whether the user’s input agrees with the correct answer stored in the list returned by <span class="math inline">\(\texttt{hypTest_prompt()}\)</span>.</p>
+<!--
+<img src="C:/Users/Joe/Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/hypothesisTestExamplePic.JPG" width="700">
+-->
+<p>Once the user gets to the “Compare Test Statistic to Null Distribution” step of the procedure, they can visualize the null distribution (which should be a standard normal since they’re taught to calculate <span class="math inline">\(z\)</span>-statistics) to determine whether they should reject or fail to reject the null hypothesis. This is just making a call to the <span class="math inline">\(\texttt{plotNormal()}\)</span> function using the user input up to this point as arguments.</p>
 </div>
 <div id="sampling-distribution-of-sample-means-visualization-tool" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sampling-distribution-of-sample-means-visualization-tool" class="anchor"></a>Sampling Distribution of Sample Means Visualization Tool</h3>
+<p>The “Sampling Distributon of Sample Means” tab in the shiny app was inspired by a similar app that STAT 101 students periodically use in their lab assignments. This app is meant to demonstrate to students the fact that for a fixed sample size, the empirical sampling distribution of sample means converges in distribution to a normal distribution with mean equal to the population mean, <span class="math inline">\(\mu\)</span>, and standard deviaton equal to the population standard deviation divided by the square root of the sample size, <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. The main issue that I had with the original app was that it was written in JMP, which I prefer to avoid if at all possible. I thought that the tool would be more accessible to students if they could use it without having to install JMP.</p>
+<p>This tool relies on 4 simple functions to generate, aggregate, and plot random normal data. The function <span class="math inline">\(\texttt{randomSample()}\)</span> generates just that, a dataframe containing a set of random samples from a normal distribution with a specified mean, standard deviation, and sample size.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/randomSample.html">randomSample</a></span>(<span class="dt">mu=</span><span class="dv">0</span>,<span class="dt">sigma=</span><span class="dv">1</span>,<span class="dt">sampleSize=</span><span class="dv">25</span>,<span class="dt">numSamples=</span><span class="dv">100</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(samp)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="co">#not a great column naming scheme, but consistent.</span></code></pre></div>
+<pre><code>##           X1         X2          X3          X4          X5
+## 1 -1.9741866  0.6768836  1.32490097 -0.35739037  0.07565934
+## 2  0.2821361  0.9937552  0.18090795 -0.09687075  1.40810184
+## 3 -0.2718143 -2.1002127  0.41383587 -0.03738673  0.23499719
+## 4 -0.1370817 -0.5336452  0.07101791 -1.24506904 -0.28910202
+## 5 -0.1053457  0.5533928  0.39351919 -0.65226184  3.55767908
+## 6 -1.2015646  0.7645702 -0.32659456  2.15739438  0.23453199</code></pre>
+<p>The function <span class="math inline">\(\texttt{randomSample_histogram()}\)</span> takes the last of these random samples and plots the data as a histogram.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/randomSample_histogram.html">randomSample_histogram</a></span>(<span class="dt">sampleData=</span>samp,<span class="dt">binwidth=</span>.<span class="dv">5</span>,<span class="dt">variableName=</span><span class="st">"Yield"</span>,<span class="dt">plotly=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="statsfordummies_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p>From here, we can use the <span class="math inline">\(\texttt{updateSampleMeans()}\)</span> function to create a new dataframe containing the sample means from the <span class="math inline">\(\texttt{samp}\)</span> dataset created above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">means &lt;-<span class="st"> </span><span class="kw"><a href="../reference/updateSampleMeans.html">updateSampleMeans</a></span>(<span class="dt">sampleData=</span>samp)</code></pre></div>
+<p>If the <span class="math inline">\(\texttt{sampleMeans}\)</span> argument of this function is left blank, a new dataframe will be created containing sample means. However, the user can pass a previously created data frame containing sample means that will updated with the sample means of the samples within <span class="math inline">\(\texttt{sampleData}\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">updatedMeans &lt;-<span class="st"> </span><span class="kw"><a href="../reference/updateSampleMeans.html">updateSampleMeans</a></span>(<span class="dt">sampleData=</span>samp,<span class="dt">sampleMeans=</span>means) <span class="co">#append the same 100 sample means to the means df</span>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all.equal">all.equal</a></span>(updatedMeans[<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,<span class="dv">1</span>],updatedMeans[<span class="dv">101</span><span class="op">:</span><span class="dv">200</span>,<span class="dv">1</span>]) <span class="co">#first 100 means are the same as the last 100 means</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>The dataset “sampleData_means” that comes with this package was created in a similar fashion as above, but with a population mean of 5 and population standard deviation of 2. We can use the <span class="math inline">\(\texttt{sampleMeans_histogram()}\)</span> function to plot the sample means data as a histogram.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"sampleData_means"</span>)
+<span class="kw"><a href="../reference/sampleMeans_histogram.html">sampleMeans_histogram</a></span>(<span class="dt">sampleMeans=</span>sampleData_means,<span class="dt">binwidth=</span>.<span class="dv">1</span>,<span class="dt">variableName=</span><span class="st">"Yield"</span>,<span class="dt">plotly=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="statsfordummies_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<!--
+Below is a picture of the original tool as seen in JMP.
+
+<img src="C:/Users/Joe/Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/meanSamplingDistributionJMP.JPG" width="700">
+
+And following is a picture of my version of the tool in shiny.
+
+<img src="C:/Users/Joe/Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/meanSamplingDistributionShiny.JPG" width="700">
+-->
+</div>
+<div id="future-work" class="section level3">
+<h3 class="hasAnchor">
+<a href="#future-work" class="anchor"></a>Future Work</h3>
+<p>(Joe) I would love to add <span class="math inline">\(t\)</span>-distribution alternatives to all of the tools that I’ve created so far since this is a topic covered in STAT 101.</p>
 </div>
 </div>
   </div>

@@ -23,9 +23,8 @@ A ggplot or plotly object, depending on whether the plotly argument was specifie
 Returns a ggplot or plotly object of a histogram generated from a set of sample means
 }
 \examples{
-dat <- randomSample(numSamples=100)
-sampleMeans <- updateSampleMeans(sampleData=dat)
-sampleMeans_histogram(sampleMeans,binwidth=.1)
+data("sampleData_means")
+sampleMeans_histogram(sampleData_means,binwidth=.1)
 
 }
 \author{

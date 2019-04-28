@@ -126,9 +126,8 @@ updateSampleMeans <- function(sampleData,sampleMeans=NULL){
 #' @return A ggplot or plotly object, depending on whether the plotly argument was specified TRUE or FALSE.
 #'
 #' @examples
-#' dat <- randomSample(numSamples=100)
-#' sampleMeans <- updateSampleMeans(sampleData=dat)
-#' sampleMeans_histogram(sampleMeans,binwidth=.1)
+#' data("sampleData_means")
+#' sampleMeans_histogram(sampleData_means,binwidth=.1)
 #'
 #' @importFrom plotly ggplotly
 #' @import ggplot2
