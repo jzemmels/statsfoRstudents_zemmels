@@ -1,6 +1,6 @@
 library(shiny)
 library(plotly)
-library(statsfoRdummies)
+library(statsfoRstudents)
 library(shinyjs)
 #library(tidyverse)
 library(dplyr)

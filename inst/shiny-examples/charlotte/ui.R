@@ -2,7 +2,7 @@ library(tidyverse)
 library(dplyr)
 library(shiny)
 library(checkmate)
-library(statsfoRdummies)
+library(statsfoRstudents)
 
 
 ui <- fluidPage(title = "Histogram Description Testing",

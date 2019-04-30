@@ -1,5 +1,5 @@
 ---
-title: "statsfoRdummies"
+title: "statsfoRstudents"
 author: "Eryn Blagg, Gulzina Kuttubekova, Charlotte Roiger, Joe Zemmels"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -18,13 +18,13 @@ vignette: >
 </style>
 
 ```{r echo=FALSE}
-library(statsfoRdummies)
+library(statsfoRstudents)
 ```
 
-You can install the $\texttt{statsfoRdummies}$ package by running the following in your console.
+You can install the $\texttt{statsfoRstudents}$ package by running the following in your console.
 
 ```{r eval=FALSE}
-devtools::install_github("https://github.com/jzemmels/statsfoRdummies")
+devtools::install_github("https://github.com/jzemmels/statsfoRstudents")
 ```
 
 

@@ -1,4 +1,4 @@
 library(testthat)
-library(statsfoRdummies)
+library(statsfoRstudents)
 
-test_check("statsfoRdummies")
+test_check("statsfoRstudents")
