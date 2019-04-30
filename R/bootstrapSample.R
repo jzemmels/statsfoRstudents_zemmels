@@ -45,7 +45,7 @@ bootstrapSample <- function(s, n) {
 
   # create n bootstrap samples
   for (i in 1:n) {
-    ss <- sample(s, m)
+    ss <- sample(s, m, replace = TRUE)
     samples[[i]] <- ss
   }
 
