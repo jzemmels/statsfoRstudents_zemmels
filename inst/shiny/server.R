@@ -26,7 +26,38 @@ server <- function(input, output, session) {
 
   ##### Gulzina's server logic:
 
+  output$plot <- renderPlotly({
+    if (input$whichmethod == "Upload file") {
+      req(input$file)
+      data <- read.csv(input$file$datapath,
+                       header = input$header,
+                       sep = input$sep,
+                       quote = input$quote)
+    }
+    if (input$whichmethod == "Generate sample") {
+      data <- rnorm(30, mean = input$mean, sd = input$sd)
+    }
+    gg <- data %>%
+      bootstrapProcess(anime = input$anime)
+    print(gg)
+  })
 
+  output$hist <- renderPlot({
+    if (input$whichmethod2 == "Upload file") {
+      req(input$file1)
+      data <- read.csv(input$file1$datapath,
+                       header = input$header1,
+                       sep = input$sep1,
+                       quote = input$quote1)
+    }
+    if (input$whichmethod2 == "Generate sample") {
+      data <- rnorm(30, mean = input$mean1, sd = input$sd1)
+    }
+    samples <- bootstrapSample(data, input$n)
+    hh <- samples %>% lapply(mean) %>% unlist() %>%
+      hist(main = "Distribution of bootstrap sample means")
+    print(hh)
+  })
 
   ##### Charlotte's server logic:
 
@@ -87,11 +118,11 @@ server <- function(input, output, session) {
   ### Normal Plot tab logic:
   output$distPlot <- renderPlotly({ #Server logic for the Normal Plot tab of the shiny app
     plotNormal(mu = input$normalPlot_mu,
-                     sigma = input$normalPlot_sigma,
-                     alpha = input$alpha,
-                     obs = input$obsZ,
-                     direction = input$dir,
-                     plotly=TRUE)
+               sigma = input$normalPlot_sigma,
+               alpha = input$alpha,
+               obs = input$obsZ,
+               direction = input$dir,
+               plotly=TRUE)
   })
 
 

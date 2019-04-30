@@ -2,7 +2,7 @@
 library(shiny)
 library(plotly)
 library(dplyr)
-library(statsfoRdummies)
+library(statsfoRstudents)
 
 
 

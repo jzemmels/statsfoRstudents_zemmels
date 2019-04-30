@@ -16,3 +16,12 @@ shiny::runApp(appDir = "statsfoRstudents/inst/shiny")
 ```
 
 Gulzina and Eryn have functions in the R folder that haven't yet been implemented into a Shiny app, so you can give them feedback based on those.
+
+#### TODO:
+
+-   add more information to .Rmd about function of package/app
+-   presentation slides
+-   vignette
+-   (maybe) add "Help" button to each tab of the shiny app that links to the correct section of the vignette (should just be a renderUI)
+-   (Joe) add some "questions to think about" to the Normal Plot and Sampling Distribution of Sample Means
+-   (Joe) add an outline to the histogram bars in randomSample\_histogram() and sampleMeans\_histogram() functions
