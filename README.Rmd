@@ -26,4 +26,3 @@ Gulzina and Eryn have functions in the R folder that haven't yet been implemente
  - vignette
  - (maybe) add "Help" button to each tab of the shiny app that links to the correct section of the vignette (should just be a renderUI)
  - (Joe) add some "questions to think about" to the Normal Plot and Sampling Distribution of Sample Means
- - (Joe) add an outline to the histogram bars in randomSample_histogram() and sampleMeans_histogram() functions
