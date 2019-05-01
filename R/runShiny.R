@@ -8,8 +8,9 @@
 #' @description Launches the statsfoRstudents shiny app in the active R session
 #'
 #' @examples
+#' \dontrun{
 #' runShiny()
-#'
+#' }
 #' @import shiny
 
 runShiny <- function() {

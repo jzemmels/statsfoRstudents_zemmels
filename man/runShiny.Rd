@@ -3,6 +3,9 @@
 \name{runShiny}
 \alias{runShiny}
 \title{Launch the statsfoRstudents shiny app}
+\source{
+https://deanattali.com/2015/04/21/r-package-shiny-app/
+}
 \usage{
 runShiny()
 }
@@ -10,8 +13,9 @@ runShiny()
 Launches the statsfoRstudents shiny app in the active R session
 }
 \examples{
+\dontrun{
 runShiny()
-
+}
 }
 \author{
 Joe Zemmels
