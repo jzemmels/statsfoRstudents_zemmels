@@ -15,7 +15,7 @@ devtools::install_github("https://github.com/jzemmels/statsfoRstudents")
 The function of this package is mainly in-service to the shiny app that accompanies it. To run this shiny app, run the following code:
 
 ```{r eval=FALSE}
-shiny::runApp(appDir = "statsfoRstudents/inst/shiny")
+statsfoRstudents::runShiny()
 ```
 
 Gulzina and Eryn have functions in the R folder that haven't yet been implemented into a Shiny app, so you can give them feedback based on those.
