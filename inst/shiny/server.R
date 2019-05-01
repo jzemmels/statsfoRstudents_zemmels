@@ -205,6 +205,78 @@ server <- function(input, output, session) {
                                                  write.csv(x = outData,file = file,row.names = FALSE)
                                                })
 
+  observeEvent(input$showQuestions,{
+    toggle("text_div")
+    output$samplingDistributionQuestions <- renderText({
+      "To help give meaning to our investigations, we need to set up a population to randomly
+sample from and a variable to collect. In this example, we are interested in the population of 2009 Honda Fits for
+      sale around Ames, IA. The variable we will examine is the listed sale price. For this investigation, we will assume
+      the mean price of 2009 Honda Fits in the population is $6,741 with a standard deviation of $1,316. Also, the
+      distribution of sales prices in the population is normal. Enter the information about the population in the corresponding population characteristic boxes above
+      We need to enter the name for the category of interest, the assumed value for the population mean and standard deviation, and the shape of the population distribution.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (1) Describe the population in this example.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (2) Describe the population parameter of interest in this example. What value are we assuming for this parameter value?
+
+      <br> <br>
+
+      Now we need to define and study samples from this population. To begin, we will randomly sample
+      5 2009 Honda Fits from our population. Enter this information in the the correct spots above.
+      Then make sure the Number of Samples is set to 1.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (3) Draw a sample from this population by clicking on the Draw Additional Samples button.
+      The histogram and summary table for the sample values are given on the upper right hand
+      side of the script window. Report the sample mean for this sample.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (4) Now, draw another sample from this population by clicking on the Draw Samples button.
+      Report the sample mean for this sample and compare to the previous sample's mean. Are they close in terms of thousands of dollars?
+
+      <br> <br>
+
+      While you were focused on the summaries on the upper right hand side of the
+      script window, the summaries on the lower right hand side of the window were also changing. In this area,
+      the script collects each sample mean from above, graphs them in a histogram and reports their mean and
+      standard deviation. Set the Number of Samples to 100. Then click on the Draw Additional Samples button.
+      The script is selecting 100 samples from the population and giving the histogram and summary statistics for each
+      sample. This is the sampling distribution of the sample mean. Now draw an additional 900 samples.
+      Remember: we have now taken 1000 samples of 5 2009 Honda Fits each from this population.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (5) What is the value of the mean of the sampling distribution? Why should you have expected
+      it to equal that value?
+
+      <br> <br>
+
+      &nbsp; &nbsp; (6) What is the value of the standard deviation of the sampling distribution? Why should you
+      have expected it to equal that value? Note you may need to perform some calculations.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (7) Briefly describe what happens to the shape of the sampling distribution when the sample size increases
+      from a small sample size to a large sample size.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (8) Briefly describe what happens to the mean of the sampling distribution when the sample size increases
+      from a small sample size to a large sample size.
+
+      <br> <br>
+
+      &nbsp; &nbsp; (9) Briefly describe what happens to the standard deviation of the sampling distribution when the sample
+      size increases from a small sample size to a large sample size."
+    })
+  })
+
   ### Hypothesis Test Challenge "game" tab logic
 
   newPrompt <- observeEvent({input$newQuestion},{ #resets all of the renderUI input values (if necessary) and draws a new question

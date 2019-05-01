@@ -185,7 +185,7 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                mainPanel(
                                  plotlyOutput(outputId = "distPlot",height="700px")
                                ))),
-                    tabPanel(h4("Hypothesis Test Challenge"),
+                    tabPanel(h4("Hypothesis Test Game"),
                              tags$head(
                                tags$style(
                                  HTML(
@@ -368,7 +368,7 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                                          value=1),
                                             textInput("name",
                                                       label = h4("Name of Variable"),
-                                                      value = "Height"),
+                                                      value = "Prices"),
                                             numericInput("sampleSize",
                                                          label = h4("Sample Size"),
                                                          value=25),
@@ -392,7 +392,13 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                  plotlyOutput(outputId = "meanSamplingDist",height="300px"),
                                  h4("Means Summary Table:"),
                                  tableOutput("meansTable")
-                               )))
+                               )),
+                             actionButton("showQuestions",h4("Show Questions")),
+                             hidden(div(id="text_div",
+                                        h4(htmlOutput("samplingDistributionQuestions",style="padding-right: 150px"))
+                             )
+                             )
+                    )
                   )
 )
 )
