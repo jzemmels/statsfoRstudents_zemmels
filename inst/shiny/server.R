@@ -208,7 +208,11 @@ server <- function(input, output, session) {
   observeEvent(input$showQuestions,{
     toggle("text_div")
     output$samplingDistributionQuestions <- renderText({
-      "To help give meaning to our investigations, we need to set up a population to randomly
+      "Below is a set of questions meant to illustrate the usage of this app. The solutions are not provided in the current version of the app.
+
+      <br> <br>
+
+To help give meaning to our investigations, we need to set up a population to randomly
 sample from and a variable to collect. In this example, we are interested in the population of 2009 Honda Fits for
       sale around Ames, IA. The variable we will examine is the listed sale price. For this investigation, we will assume
       the mean price of 2009 Honda Fits in the population is $6,741 with a standard deviation of $1,316. Also, the

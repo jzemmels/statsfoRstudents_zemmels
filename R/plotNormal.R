@@ -43,26 +43,30 @@ plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800
     plt <- plt +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
                     xlim = c(qnorm(mean = mu,sd=sigma,p = 1-alpha/2),max(x)),
-                    geom = "area") +
+                    geom = "area",
+                    fill="lightblue") +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
                     xlim = c(min(x),qnorm(mean = mu,sd=sigma,p = alpha/2)),
-                    geom = "area")
+                    geom = "area",
+                    fill="lightblue")
   }
   if(direction == ">"){
     plt <- plt +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
                     xlim = c(qnorm(mean = mu,sd=sigma,p = 1-alpha),max(x)),
-                    geom = "area")
+                    geom = "area",
+                    fill="lightblue")
   }
   if(direction == "<"){
     plt <- plt +
       stat_function(fun = dnorm,args=list(mean=mu,sd=sigma),
                     xlim = c(min(x),qnorm(mean = mu,sd=sigma,p = alpha)),
-                    geom = "area")
+                    geom = "area",
+                    fill="lightblue")
   }
 
   plt <- plt +
-    geom_vline(xintercept = obs,colour="blue",linetype="dashed",size=2) #add observation to plot as top layer
+    geom_vline(xintercept = obs,colour="black",linetype="dashed",size=2) #add observation to plot as top layer
 
   if(plotly){ #turns ggplot into plotly object
     plt <- ggplotly(plt)
