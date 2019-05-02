@@ -53,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/statsfordummies.html">statsfoRstudents</a>
+      <a href="articles/statsforstudents.html">statsfoRstudents</a>
     </li>
   </ul>
 </li>
@@ -85,10 +85,17 @@
 <h2 class="hasAnchor">
 <a href="#stat-585-final-project-statsforstudents-packageshiny-app" class="anchor"></a>STAT 585 Final Project: statsfoRstudents package/shiny app</h2>
 
+<p>This is a package meant to supplement the content of two introductory statistics courses at Iowa State University, STAT 101 and STAT 104. To install this package from github, run the following in your R console:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"https://github.com/jzemmels/statsfoRstudents"</span>)</code></pre></div>
 <p>The function of this package is mainly in-service to the shiny app that accompanies it. To run this shiny app, run the following code:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">statsfoRstudents<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/statsfoRstudents/topics/runShiny">runShiny</a></span>()</code></pre></div>
-<p>Gulzina and Eryn have functions in the R folder that haven’t yet been implemented into a Shiny app, so you can give them feedback based on those.</p>
+<p>A summary of the individual applets inside this shiny app is provided here:</p>
+<ul>
+<li><p><strong>Normal Plot:</strong> A visual tool for determining when to reject vs. fail to reject a null hypothesis.</p></li>
+<li><p><strong>Hypothesis Test Game:</strong> A madlibs-style “game” in which a randomly selected hypothesis test problem is given to the user. The user can practice the hypothesis test procedure while receiving real-time feedback.</p></li>
+<li><p><strong>Sampling Distribution of Sample Means:</strong> A visual tool to demonstrate the asymptotic distributional properties of the sample mean.</p></li>
+</ul>
+<p>For a more thorough discussion of each applet and how they are implemented behing the scenes, please see the vignette in the vignettes folder of this package or <a href="https://jzemmels.github.io/statsfoRstudents/articles/statsforstudents.html">by following this link</a></p>
 <div id="todo" class="section level4">
 <h4 class="hasAnchor">
 <a href="#todo" class="anchor"></a>TODO:</h4>
@@ -97,7 +104,6 @@
 <li>presentation slides</li>
 <li>vignette</li>
 <li>(maybe) add “Help” button to each tab of the shiny app that links to the correct section of the vignette (should just be a renderUI)</li>
-<li>(Joe) add some “questions to think about” to the Normal Plot and Sampling Distribution of Sample Means</li>
 </ul>
 </div>
 </div>
