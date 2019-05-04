@@ -27,9 +27,9 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                              # Show a plot of the generated distribution
                              mainPanel(
                                h4("Area where there could be a Type I error") ,
-                               plotlyOutput("plotup"),
+                               plotlyOutput("plot1"),
                                h4("Area where there could be a Type II error"),
-                               plotlyOutput("plotlw")
+                               plotlyOutput("plot2")
                              )
                     ),
 
