@@ -8,7 +8,31 @@ library(dplyr)
 
 shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                   tabsetPanel(#widths=c(2,10),
-                    tabPanel(title = h4("Eryn's Shiny App")),
+                    tabPanel(title = h4("Type I Error vs Type II error"),
+
+                             # Sidebar input
+                             sidebarPanel(
+                               numericInput("means", "Mean: ", value=0),
+                               numericInput("sds", "Standard deviation:",
+                                            value = 1, min=0.0001),
+                               numericInput("alpha", "Alpha Level", value=0.5, min=0.00000001, max=0.49),
+                               selectInput("dir",
+                                           label="Direction of Alternative Hypothesis",
+                                           choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
+                                                          ">",
+                                                          "<"))
+                             ),
+
+                             # Show a plot of the generated distribution
+                             mainPanel(
+                               h4("Area where there could be a Type I error") ,
+                               plotOutput("plotup"),
+                               h4("Area where there could be a Type II error"),
+                               plotOutput("plotlw")
+                             )
+                    )
+
+                             ),
                     tabPanel(h4("Bootstrapping Process"),
                              fluid = TRUE,
                              sidebarLayout(
