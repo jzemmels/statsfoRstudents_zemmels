@@ -12,6 +12,7 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
 
                              # Sidebar input
                              sidebarPanel(
+                               helpText("Choose the following parameters:"),
                                numericInput("means", "Mean: ", value=0),
                                numericInput("sds", "Standard deviation:",
                                             value = 1, min=0.0001),
@@ -26,13 +27,12 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                              # Show a plot of the generated distribution
                              mainPanel(
                                h4("Area where there could be a Type I error") ,
-                               plotOutput("plotup"),
+                               plotlyOutput("plotup"),
                                h4("Area where there could be a Type II error"),
-                               plotOutput("plotlw")
+                               plotlyOutput("plotlw")
                              )
-                    )
+                    ),
 
-                             ),
                     tabPanel(h4("Bootstrapping Process"),
                              fluid = TRUE,
                              sidebarLayout(
@@ -426,7 +426,6 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                   )
 )
 )
-
 
 
 

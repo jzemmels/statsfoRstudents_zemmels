@@ -22,7 +22,16 @@ question <- list()
 server <- function(input, output, session) {
 
   ##### Eryn's server logic:
+  reactivePlotlys <- reactive({
+    ploterrors(means = input$Errors_means,
+               sds = input$Errors_sds,
+               alpha = input$alpha,
+               direction = input$dir,
+               plotly=TRUE)
+  })
 
+  output$plotup <- renderPlotly(reactivePlotlys()[[1]])
+  output$plotlw <- renderPlotly(reactivePlotlys()[[2]])
 
   ##### Gulzina's server logic:
 
