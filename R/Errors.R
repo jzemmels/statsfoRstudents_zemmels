@@ -32,34 +32,34 @@ ploterrors <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotl
     pltup <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(quantile(x,probs = 1-alpha/2),max(x)),
-                    geom = "area") +
+                    geom = "area", fill= "light blue") +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(min(x),quantile(x,probs = alpha/2)),
-                    geom = "area")
+                    geom = "area", fill="light blue")
     pltlw<- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                          xlim = c(quantile(x,probs = alpha/2),quantile(x,probs = 1-alpha/2),
-                                  geom = "area"))
+                                  geom = "area", fill= "light blue"))
   }
   if(direction == ">"){ #greater than
     pltup <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(quantile(x,probs = alpha),max(x)),
-                    geom = "area")
+                    geom = "area", fill="light blue")
     pltlw <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(min(x),quantile(x,probs = alpha) ),
-                    geom = "area")
+                    geom = "area", fill="light blue")
   }
   if(direction == "<"){ #less than by default
     pltup <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(min(x),quantile(x,probs = alpha)),
-                    geom = "area")
+                    geom = "area", fill= "light blue")
     pltlw <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
                     xlim = c(quantile(x,probs = alpha),max(x)),
-                    geom = "area")
+                    geom = "area", fill= "light blue")
   }
 
   if(plotly){ #turns ggplot into plotly object
