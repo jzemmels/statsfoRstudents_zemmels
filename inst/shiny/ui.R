@@ -182,35 +182,36 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                )
                              )
                     ),
-                    tabPanel(h4("Normal Plot"),
-                             sidebarLayout(
-                               sidebarPanel(width=3,
-                                            selectInput("distributionType",
-                                                        label=h4("Population Shape"),
-                                                        choices = list("Normal",
-                                                                       "Another Option"),
-                                                        selected="Normal"),
-                                            numericInput("normalPlot_mu",
-                                                         label = h4("Population Mean"),
-                                                         value=0),
-                                            numericInput("normalPlot_sigma",
-                                                         label = h4("Population Standard Deviation"),
-                                                         value=1),
-                                            numericInput("alpha",
-                                                         label = h4("Significance Level"),
-                                                         value=.05),
-                                            selectInput("dir",
-                                                        label= h4("Direction of Alternative Hypothesis"),
-                                                        choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
-                                                                       ">",
-                                                                       "<")),
-                                            numericInput("obsZ",
-                                                         label= h4("Observed Test Statistic"),
-                                                         value=0)),
-                               # Show a plot of the generated distribution
-                               mainPanel(
-                                 plotlyOutput(outputId = "distPlot",height="700px")
-                               ))),
+                    ##### Uncomment below after the presentation:
+                    # tabPanel(h4("Normal Plot"),
+                    #          sidebarLayout(
+                    #            sidebarPanel(width=3,
+                    #                         selectInput("distributionType",
+                    #                                     label=h4("Population Shape"),
+                    #                                     choices = list("Normal",
+                    #                                                    "Another Option"),
+                    #                                     selected="Normal"),
+                    #                         numericInput("normalPlot_mu",
+                    #                                      label = h4("Population Mean"),
+                    #                                      value=0),
+                    #                         numericInput("normalPlot_sigma",
+                    #                                      label = h4("Population Standard Deviation"),
+                    #                                      value=1),
+                    #                         numericInput("alpha",
+                    #                                      label = h4("Significance Level"),
+                    #                                      value=.05),
+                    #                         selectInput("dir",
+                    #                                     label= h4("Direction of Alternative Hypothesis"),
+                    #                                     choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
+                    #                                                    ">",
+                    #                                                    "<")),
+                    #                         numericInput("obsZ",
+                    #                                      label= h4("Observed Test Statistic"),
+                    #                                      value=0)),
+                    #            # Show a plot of the generated distribution
+                    #            mainPanel(
+                    #              plotlyOutput(outputId = "distPlot",height="700px")
+                    #            ))),
                     tabPanel(h4("Hypothesis Test Game"),
                              tags$head(
                                tags$style(
