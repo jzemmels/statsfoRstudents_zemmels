@@ -38,8 +38,8 @@ ploterrors <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotl
                     geom = "area", fill="light blue")
     pltlw<- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
-                         xlim = c(quantile(x,probs = alpha/2),quantile(x,probs = 1-alpha/2),
-                                  geom = "area", fill= "light blue"))
+                         xlim = c(quantile(x,probs = alpha/2),quantile(x,probs = 1-alpha/2)),
+                                  geom = "area", fill= "light blue")
   }
   if(direction == ">"){ #greater than
     pltup <- initalplt +
