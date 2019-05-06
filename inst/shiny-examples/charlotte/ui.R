@@ -13,19 +13,21 @@ ui <- fluidPage(title = "Histogram Description Testing",
                   tabsetPanel(
                     tabPanel("Modality",
                              plotOutput("plotModal"),
-                             uiOutput("aspectModal")
+                             uiOutput("aspectModal"),
+                             textOutput("feedbackModal")
 
                     ),
                     tabPanel("Shape",
 
                              plotOutput("plotShape"),
-                             uiOutput("aspectShape")
+                             uiOutput("aspectShape"),
+                             textOutput("feedbackShape")
                     ),
                     tabPanel("Outlier",
 
                              plotOutput("plotOutlier"),
-                             uiOutput("aspectOutlier")
-                             # textOutput("feedback")
+                             uiOutput("aspectOutlier"),
+                             textOutput("feedbackOutlier")
                     )
 
                   )

@@ -22,7 +22,16 @@ question <- list()
 server <- function(input, output, session) {
 
   ##### Eryn's server logic:
+  reactivePlotlys <- reactive({
+    ploterrors(means = input$Errors_means,
+               sds = input$Errors_sds,
+               alpha = input$alpha,
+               direction = input$dir,
+               plotly=TRUE)
+  })
 
+  output$plot1 <- renderPlotly(reactivePlotlys()[[1]])
+  output$plot2 <- renderPlotly(reactivePlotlys()[[2]])
 
   ##### Gulzina's server logic:
 
@@ -88,26 +97,43 @@ server <- function(input, output, session) {
     output$plotModal <- renderPlot({
       plotModal(randomDist)[[2]]
     })
+    output$feedbackModal <- renderText({
+
+      feedback <- case_when(input$answerModal == plotModal(randomDist)[[1]] ~ paste("Modality Feedback:",praise()),
+                            input$answerModal != plotModal(randomDist)[[1]] ~ "Modality Feedback: Try again.",
+                            TRUE ~ "")
+
+      return(feedback)
+
+    })
 
     output$plotShape <- renderPlot({
       plotShape(randomDist)[[2]]
+    })
+
+    output$feedbackShape <- renderText({
+
+      feedback <- case_when(input$answerShape == plotShape(randomDist)[[1]] ~ paste("Shape Feedback:",praise()),
+                            input$answerShape != plotShape(randomDist)[[1]] ~ "Shape Feedback: Try again.",
+                            TRUE ~ "")
+
+      return(feedback)
+
     })
 
     output$plotOutlier <- renderPlot({
       plotOutlier(randomDist)[[2]]
     })
 
-    # output$feedback <- renderText({
-    #   print(input$answer)
-    #   print(plotModal(randomDist)[[1]])
-    #   if(input$answerModal==plotModal[[1]]) {
-    #     return("Correct")
-    #       #create flag (has been done)
-    #     }
-    #   else {"Not Correct, Select Another"}
-    #   })
-    #
+    output$feedbackOutlier <- renderText({
 
+      feedback <- case_when(input$answerOutlier == plotOutlier(randomDist)[[1]] ~ paste("Outlier Feedback:",praise()),
+                            input$answerOutlier != plotOutlier(randomDist)[[1]] ~ "Outlier Feedback: Try again.",
+                            TRUE ~ "")
+
+      return(feedback)
+
+    })
 
   })
 
