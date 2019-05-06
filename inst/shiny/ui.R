@@ -393,7 +393,7 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                  h4("Means Summary Table:"),
                                  tableOutput("meansTable")
                                )),
-                             actionButton("showQuestions",h4("Show Questions")),
+                             actionButton("showQuestions",h4("Show/Hide Questions")),
                              hidden(div(id="text_div",
                                         h4(htmlOutput("samplingDistributionQuestions",style="padding-right: 150px"))
                              )

@@ -42,7 +42,7 @@ shiny::runApp(appDir = "inst/shiny")
 
 ## Joe
 
-Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorized the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their $z$-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I had the idea to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative distribution direction, and plot an observed $z$-statistic. I believed that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density  might lead to a deeper understanding than simply checking whether the $p$-value is less than .05.
+Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorize the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their $z$-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I had the idea to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative hypothesis direction, and plot an observed $z$-statistic. The idea was that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density  might lead to a deeper understanding than simply checking whether the $p$-value is less than .05.
 
 ### plotNormal()
 
@@ -62,7 +62,7 @@ Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot"
 
 ### Hypothesis Test Challenge
 
-Along with the $\texttt{plotNormal()}$ function, another idea that I had was to make a Madlibs-style hypothesis test "game" in which students could practice the hypothesis test procedure while receiving real-time feedback. This is implemented in the "Hypothesis Test Challenge" tab of the shiny app. Under the hood, this app is simply making a call to a function I wrote, $\texttt{hypTest_prompt()}$, that randomly selects from a collection of hypothesis test prompts. Below is one example of using the function.
+Along with the $\texttt{plotNormal()}$ function, another idea that I had was to make a Madlibs-style hypothesis test "game" in which students could practice the hypothesis test procedure while receiving real-time feedback. This is implemented in the "Hypothesis Test Challenge" tab of the shiny app. Under the hood, this app is simply making a call to a function, $\texttt{hypTest_prompt()}$, that randomly selects from a collection of hypothesis test prompts. Below is one example of using the function.
 
 ```{r}
 set.seed(4282019)
