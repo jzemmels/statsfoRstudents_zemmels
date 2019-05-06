@@ -13,8 +13,8 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                              # Sidebar input
                              sidebarPanel(
                                helpText("Choose the following parameters:"),
-                               numericInput("means", "Mean: ", value=0),
-                               numericInput("sds", "Standard deviation:",
+                               numericInput("Errors_means", "Mean: ", value=0),
+                               numericInput("Errors_sds", "Standard deviation:",
                                             value = 1, min=0.0001),
                                numericInput("alpha", "Alpha Level", value=0.5, min=0.00000001, max=0.49),
                                selectInput("dir",
@@ -26,10 +26,10 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
 
                              # Show a plot of the generated distribution
                              mainPanel(
-                               h4("Area where there could be a Type I error") ,
-                               plotlyOutput("plot1"),
+                               h4("Area where there could be a Type I error"),
+                               plotlyOutput("plotup"),
                                h4("Area where there could be a Type II error"),
-                               plotlyOutput("plot2")
+                               plotlyOutput("plotlw")
                              )
                     ),
 

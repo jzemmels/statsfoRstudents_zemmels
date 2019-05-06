@@ -30,8 +30,8 @@ server <- function(input, output, session) {
                plotly=TRUE)
   })
 
-  output$plot1 <- renderPlotly(reactivePlotlys()[[1]])
-  output$plot2 <- renderPlotly(reactivePlotlys()[[2]])
+  output$plotup <- renderPlotly(reactivePlotlys()[[1]])
+  output$plotlw <- renderPlotly(reactivePlotlys()[[2]])
 
   ##### Gulzina's server logic:
 

@@ -44,11 +44,11 @@ ploterrors <- function(means=0,sds=1,alpha=.05,direction=intToUtf8("8800"),plotl
   if(direction == ">"){ #greater than
     pltup <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
-                    xlim = c(quantile(x,probs = alpha),max(x)),
+                    xlim = c(quantile(x,probs = 1-alpha),max(x)),
                     geom = "area", fill="light blue")
     pltlw <- initalplt +
       stat_function(fun = dnorm,args=list(mean=means,sd=sds),
-                    xlim = c(min(x),quantile(x,probs = alpha) ),
+                    xlim = c(min(x),quantile(x,probs = 1-alpha) ),
                     geom = "area", fill="light blue")
   }
   if(direction == "<"){ #less than by default
