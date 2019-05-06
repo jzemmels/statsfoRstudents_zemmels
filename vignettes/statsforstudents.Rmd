@@ -40,6 +40,18 @@ shiny::runApp(appDir = "inst/shiny")
 
 ## Charlotte
 
+As a STAT 101 teaching assistant, I see many students struggle to grasp then immediately forget how to properly analyze a histogram. While this very small facet of statistical education may seem trivial we use descriptions of histograms to diagnose whether distributions can be considered Normal. This in turn helps fuel a greater understanding of the assumptions required for basic hypothesis testing and whether inferences can be generalized. Therefore I have devised a very basic quiz-type app that will test whether students can correctly identify certain atributes of a histogram across three different categories: Modality, Shape, and Outliers. All three functions associated with this portion of the shiny app have very similar structure and functionality so for the sake of brevity I will only provide a walk-through of `plotModal()`.
+
+### plotModal()
+
+The function `plotModal()` takes a random number as an input and plots either a unimodal, bimodal, or multimodal distribution. No other user input is required and the way the app functions, the random number that is fed into `plotModal()` is generated from the press of the "New Distribution" button. This function technically returns a list of two objects the first of which is the label marker of what type of distribution is being plotted. This is then used to test whether the user of the app has selected the correct output. The second object of the list is a ggplot object that shows the plot the distribution generated. Below is an example with
+arbitrary "random number" set equal to 2, this shows the plot portion of the function. 
+
+```{r}
+plotModal(2)[[2]]
+```
+
+
 ## Joe
 
 Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorize the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their $z$-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I had the idea to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative hypothesis direction, and plot an observed $z$-statistic. The idea was that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density  might lead to a deeper understanding than simply checking whether the $p$-value is less than .05.
