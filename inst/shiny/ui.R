@@ -16,8 +16,8 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                numericInput("Errors_means", "Mean: ", value=0),
                                numericInput("Errors_sds", "Standard deviation:",
                                             value = 1, min=0.0001),
-                               numericInput("alpha", "Alpha Level", value=0.5, min=0.00000001, max=0.49),
-                               selectInput("dir",
+                               numericInput("alpha_eryn", "Alpha Level", value=0.5, min=0.00000001, max=0.49),
+                               selectInput("dir_eryn",
                                            label="Direction of Alternative Hypothesis",
                                            choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
                                                           ">",
@@ -182,37 +182,36 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                )
                              )
                     ),
-                    ##### Uncomment below after the presentation:
-                    # tabPanel(h4("Normal Plot"),
-                    #          sidebarLayout(
-                    #            sidebarPanel(width=3,
-                    #                         selectInput("distributionType",
-                    #                                     label=h4("Population Shape"),
-                    #                                     choices = list("Normal",
-                    #                                                    "Another Option"),
-                    #                                     selected="Normal"),
-                    #                         numericInput("normalPlot_mu",
-                    #                                      label = h4("Population Mean"),
-                    #                                      value=0),
-                    #                         numericInput("normalPlot_sigma",
-                    #                                      label = h4("Population Standard Deviation"),
-                    #                                      value=1),
-                    #                         numericInput("alpha",
-                    #                                      label = h4("Significance Level"),
-                    #                                      value=.05),
-                    #                         selectInput("dir",
-                    #                                     label= h4("Direction of Alternative Hypothesis"),
-                    #                                     choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
-                    #                                                    ">",
-                    #                                                    "<")),
-                    #                         numericInput("obsZ",
-                    #                                      label= h4("Observed Test Statistic"),
-                    #                                      value=0)),
-                    #            # Show a plot of the generated distribution
-                    #            mainPanel(
-                    #              plotlyOutput(outputId = "distPlot",height="700px")
-                    #            ))),
-                    tabPanel(h4("Hypothesis Test Game"),
+                    tabPanel(h4("Normal Plot"),
+                             sidebarLayout(
+                               sidebarPanel(width=3,
+                                            selectInput("distributionType",
+                                                        label=h4("Population Shape"),
+                                                        choices = list("Normal",
+                                                                       "Another Option"),
+                                                        selected="Normal"),
+                                            numericInput("normalPlot_mu",
+                                                         label = h4("Population Mean"),
+                                                         value=0),
+                                            numericInput("normalPlot_sigma",
+                                                         label = h4("Population Standard Deviation"),
+                                                         value=1),
+                                            numericInput("alpha",
+                                                         label = h4("Significance Level"),
+                                                         value=.05),
+                                            selectInput("dir",
+                                                        label= h4("Direction of Alternative Hypothesis"),
+                                                        choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
+                                                                       ">",
+                                                                       "<")),
+                                            numericInput("obsZ",
+                                                         label= h4("Observed Test Statistic"),
+                                                         value=0)),
+                               # Show a plot of the generated distribution
+                               mainPanel(
+                                 plotlyOutput(outputId = "distPlot",height="700px")
+                               ))),
+                    tabPanel(h4("Hypothesis Test Challenge"),
                              tags$head(
                                tags$style(
                                  HTML(

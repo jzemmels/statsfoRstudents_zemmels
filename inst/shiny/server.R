@@ -25,8 +25,8 @@ server <- function(input, output, session) {
   reactivePlotlys <- reactive({
     ploterrors(means = input$Errors_means,
                sds = input$Errors_sds,
-               alpha = input$alpha,
-               direction = input$dir,
+               alpha = input$alpha_eryn,
+               direction = input$dir_eryn,
                plotly=TRUE)
   })
 
