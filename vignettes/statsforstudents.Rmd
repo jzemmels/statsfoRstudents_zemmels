@@ -153,3 +153,7 @@ And following is a picture of my version of the tool in shiny.
 ### Future Work
 
 (Joe) I would love to add $t$-distribution alternatives to all of the tools that I've created so far since this is a topic covered in STAT 101.
+
+(Eryn) I would like to add some more fuctionality to my Errors app, but I would also like to have a tool that has a game similar to Joe's work, but for differences in proportions. Most my students have no idea that they are relatively the same thing as testing a single mean, or proportions. 
+
+
