@@ -80,7 +80,7 @@
       <h1>statsfoRstudents</h1>
                         <h4 class="author">Eryn Blagg, Gulzina Kuttubekova, Charlotte Roiger, Joe Zemmels</h4>
             
-            <h4 class="date">2019-05-05</h4>
+            <h4 class="date">2019-05-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jzemmels/finalProject/blob/master/vignettes/statsforstudents.Rmd"><code>vignettes/statsforstudents.Rmd</code></a></small>
       <div class="hidden name"><code>statsforstudents.Rmd</code></div>
@@ -98,8 +98,8 @@
 </style>
 <p>You can install the <span class="math inline">\(\texttt{statsfoRstudents}\)</span> package by running the following in your console.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"https://github.com/jzemmels/statsfoRstudents"</span>)</code></pre></div>
-<p>While this vignette will show how the various functions within this package can be used from the console, the purpose of this package is mainly in-service to the shiny app that accompanies it. It is highly recommended to first launch the shiny app to follow along with this vignette. Assuming that you are in the package directory, you can launch the app by running the following in your console.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runApp">runApp</a></span>(<span class="dt">appDir =</span> <span class="st">"inst/shiny"</span>)</code></pre></div>
+<p>While this vignette will show how the various functions within this package can be used from the console, the purpose of this package is mainly to service the shiny app that accompanies it. It is highly recommended to first launch the shiny app to follow along with this vignette. Assuming that you are in the package directory, you can launch the app by running the following in your console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">statsfoRstudents<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/statsfoRstudents/topics/runShiny">runShiny</a></span>()</code></pre></div>
 <div id="eryn" class="section level2">
 <h2 class="hasAnchor">
 <a href="#eryn" class="anchor"></a>Eryn</h2>
@@ -111,18 +111,26 @@
 <div id="charlotte" class="section level2">
 <h2 class="hasAnchor">
 <a href="#charlotte" class="anchor"></a>Charlotte</h2>
+<p>As a STAT 101 teaching assistant, I see many students struggle to grasp then immediately forget how to properly analyze a histogram. While this very small facet of statistical education may seem trivial we use descriptions of histograms to diagnose whether distributions can be considered Normal. This in turn helps fuel a greater understanding of the assumptions required for basic hypothesis testing and whether inferences can be generalized. Therefore I have devised a very basic quiz-type app that will test whether students can correctly identify certain atributes of a histogram across three different categories: Modality, Shape, and Outliers. All three functions associated with this portion of the shiny app have very similar structure and functionality so for the sake of brevity I will only provide a walk-through of <code><a href="../reference/plotModal.html">plotModal()</a></code>.</p>
+<div id="plotmodal" class="section level3">
+<h3 class="hasAnchor">
+<a href="#plotmodal" class="anchor"></a>plotModal()</h3>
+<p>The function <code><a href="../reference/plotModal.html">plotModal()</a></code> takes a random number as an input and plots either a unimodal, bimodal, or multimodal distribution. No other user input is required and the way the app functions, the random number that is fed into <code><a href="../reference/plotModal.html">plotModal()</a></code> is generated from the press of the “New Distribution” button. This function technically returns a list of two objects the first of which is the label marker of what type of distribution is being plotted. This is then used to test whether the user of the app has selected the correct output. The second object of the list is a ggplot object that shows the plot the distribution generated. Below is an example with arbitrary “random number” set equal to 2, this shows the plot portion of the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotModal.html">plotModal</a></span>(<span class="dv">2</span>)[[<span class="dv">2</span>]]</code></pre></div>
+<p><img src="statsforstudents_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+</div>
 </div>
 <div id="joe" class="section level2">
 <h2 class="hasAnchor">
 <a href="#joe" class="anchor"></a>Joe</h2>
-<p>Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorize the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their <span class="math inline">\(z\)</span>-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I had the idea to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative hypothesis direction, and plot an observed <span class="math inline">\(z\)</span>-statistic. The idea was that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density might lead to a deeper understanding than simply checking whether the <span class="math inline">\(p\)</span>-value is less than .05.</p>
+<p>Last semester many of my STAT 101 students lacked an understanding of what they were doing when performing a hypothesis test. Many would simply memorize the procedure and formulas while lacking the intuition for how the procedure and formulas function. I remember frequently thinking that many students would gain a better understanding of, for example, why they reject null hypothesis when their <span class="math inline">\(z\)</span>-statistic is far from 0 if they had an interactive, dynamic tool with which they could practice their hypothesis testing skills. This was the inspiration for part of my contribution to this project. I wanted to create a visualization tool that students could use to graph a normal distribution density, specify a significance level and alternative hypothesis direction, and plot an observed <span class="math inline">\(z\)</span>-statistic. My hope was that having the ability to actually visualize the acceptance/rejection regions under a normal distribution density might lead to a deeper understanding than simply checking whether the <span class="math inline">\(p\)</span>-value is less than .05.</p>
 <div id="plotnormal" class="section level3">
 <h3 class="hasAnchor">
 <a href="#plotnormal" class="anchor"></a>plotNormal()</h3>
-<p>The function <span class="math inline">\(\texttt{plotNormal()}\)</span> allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the signficance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not possible to show in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.</p>
+<p>The function <span class="math inline">\(\texttt{plotNormal()}\)</span> allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the signficance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not shown in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.</p>
 <p>The intent of this function is to give the user a way to visually determine whether their observed value falls in the critical region. This function is used by itself in the “Normal Plot” tab of the shiny app, but I believe its most useful inclusion is in the “Hypothesis Test Challenge” tab.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotNormal.html">plotNormal</a></span>(<span class="dt">mu=</span><span class="dv">2</span>,<span class="dt">sigma=</span><span class="dv">4</span>,<span class="dt">alpha=</span>.<span class="dv">1</span>,<span class="dt">obs=</span><span class="dv">3</span>,<span class="dt">direction=</span><span class="st">"&lt;"</span>,<span class="dt">plotly =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="statsforstudents_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="statsforstudents_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <!--
 Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot" tab of the shiny app.
 
@@ -134,30 +142,9 @@ Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot"
 <a href="#hypothesis-test-challenge" class="anchor"></a>Hypothesis Test Challenge</h3>
 <p>Along with the <span class="math inline">\(\texttt{plotNormal()}\)</span> function, another idea that I had was to make a Madlibs-style hypothesis test “game” in which students could practice the hypothesis test procedure while receiving real-time feedback. This is implemented in the “Hypothesis Test Challenge” tab of the shiny app. Under the hood, this app is simply making a call to a function, <span class="math inline">\(\texttt{hypTest_prompt()}\)</span>, that randomly selects from a collection of hypothesis test prompts. Below is one example of using the function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">4282019</span>)
-<span class="kw"><a href="../reference/hypTest_prompt.html">hypTest_prompt</a></span>()</code></pre></div>
-<pre><code>## $prompt
-## [1] "Blood glucose levels for obese patients have a mean of 100 with a standard deviation of 15. A researcher thinks that a diet high in raw cornstarch will have a positive or negative effect on blood glucose levels. A sample of 30 patients who have tried the raw cornstarch diet have a mean glucose level of 140. Test the hypothesis that the raw cornstarch had an effect if alpha = .05."
-## 
-## $nullVal
-## [1] 100
-## 
-## $altDir
-## [1] "&lt;U+2260&gt;"
-## 
-## $altVal
-## [1] 100
-## 
-## $testStat
-## [1] 14.60593
-## 
-## $signifLevel
-## [1] 0.05
-## 
-## $decision
-## [1] "Reject Null"
-## 
-## $source
-## [1] "https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/hypothesis-testing/#HTExamples"</code></pre>
+question &lt;-<span class="st"> </span><span class="kw"><a href="../reference/hypTest_prompt.html">hypTest_prompt</a></span>()
+question<span class="op">$</span>prompt <span class="co">#there are other elements of the list not shown for sake of space</span></code></pre></div>
+<pre><code>## [1] "Blood glucose levels for obese patients have a mean of 100 with a standard deviation of 15. A researcher thinks that a diet high in raw cornstarch will have a positive or negative effect on blood glucose levels. A sample of 30 patients who have tried the raw cornstarch diet have a mean glucose level of 140. Test the hypothesis that the raw cornstarch had an effect if alpha = .05."</code></pre>
 <p>The shiny app uses shiny’s <span class="math inline">\(\texttt{renderUI()}\)</span> function to generate select/numeric input objects with which the user can interact. The app will give feedback based on whether the user’s input agrees with the correct answer stored in the list returned by <span class="math inline">\(\texttt{hypTest_prompt()}\)</span>.</p>
 <!--
 <img src="C:/Users/Joe/Google%20Drive/Spring%202019/STAT%20585/finalProject/vignettes/images/hypothesisTestExamplePic.JPG" width="700">
@@ -167,7 +154,7 @@ Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot"
 <div id="sampling-distribution-of-sample-means-visualization-tool" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sampling-distribution-of-sample-means-visualization-tool" class="anchor"></a>Sampling Distribution of Sample Means Visualization Tool</h3>
-<p>The “Sampling Distributon of Sample Means” tab in the shiny app was inspired by a similar app that STAT 101 students periodically use in their lab assignments. This app is meant to demonstrate to students the fact that for a fixed sample size, the empirical sampling distribution of sample means converges in distribution to a normal distribution with mean equal to the population mean, <span class="math inline">\(\mu\)</span>, and standard deviaton equal to the population standard deviation divided by the square root of the sample size, <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. The main issue that I had with the original app was that it was written in JMP, which I prefer to avoid if at all possible. I thought that the tool would be more accessible to students if they could use it without having to install JMP.</p>
+<p>The “Sampling Distributon of Sample Means” tab in the shiny app was inspired by a similar app that STAT 101 students periodically use in their lab assignments. This app is meant to demonstrate to students the fact that for a fixed sample size, the sampling distribution of sample means converges in distribution to a normal distribution with mean equal to the population mean, <span class="math inline">\(\mu\)</span>, and standard deviaton equal to the population standard deviation divided by the square root of the sample size, <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. The main issue that I had with the original app was that it was written in JMP, which I prefer to avoid if at all possible. I thought that the tool would be more accessible to students if they could use it without having to install JMP.</p>
 <p>This tool relies on 4 simple functions to generate, aggregate, and plot random normal data. The function <span class="math inline">\(\texttt{randomSample()}\)</span> generates just that, a dataframe containing a set of random samples from a normal distribution with a specified mean, standard deviation, and sample size.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/randomSample.html">randomSample</a></span>(<span class="dt">mu=</span><span class="dv">0</span>,<span class="dt">sigma=</span><span class="dv">1</span>,<span class="dt">sampleSize=</span><span class="dv">25</span>,<span class="dt">numSamples=</span><span class="dv">100</span>)
 <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(samp)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="co">#not a great column naming scheme, but consistent.</span></code></pre></div>
@@ -180,7 +167,7 @@ Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot"
 ## 6 -1.2015646  0.7645702 -0.32659456  2.15739438  0.23453199</code></pre>
 <p>The function <span class="math inline">\(\texttt{randomSample_histogram()}\)</span> takes the last of these random samples and plots the data as a histogram.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/randomSample_histogram.html">randomSample_histogram</a></span>(<span class="dt">sampleData=</span>samp,<span class="dt">binwidth=</span>.<span class="dv">5</span>,<span class="dt">variableName=</span><span class="st">"Yield"</span>,<span class="dt">plotly=</span><span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="statsforstudents_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p><img src="statsforstudents_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 <p>From here, we can use the <span class="math inline">\(\texttt{updateSampleMeans()}\)</span> function to create a new dataframe containing the sample means from the <span class="math inline">\(\texttt{samp}\)</span> dataset created above.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">means &lt;-<span class="st"> </span><span class="kw"><a href="../reference/updateSampleMeans.html">updateSampleMeans</a></span>(<span class="dt">sampleData=</span>samp)</code></pre></div>
 <p>If the <span class="math inline">\(\texttt{sampleMeans}\)</span> argument of this function is left blank, a new dataframe will be created containing sample means. However, the user can pass a previously created data frame containing sample means that will updated with the sample means of the samples within <span class="math inline">\(\texttt{sampleData}\)</span>.</p>
@@ -190,7 +177,8 @@ Below is a snapshot of the usage of $\texttt{plotNormal()}$ in the "Normal Plot"
 <p>The dataset “sampleData_means” that comes with this package was created in a similar fashion as above, but with a population mean of 5 and population standard deviation of 2. We can use the <span class="math inline">\(\texttt{sampleMeans_histogram()}\)</span> function to plot the sample means data as a histogram.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"sampleData_means"</span>)
 <span class="kw"><a href="../reference/sampleMeans_histogram.html">sampleMeans_histogram</a></span>(<span class="dt">sampleMeans=</span>sampleData_means,<span class="dt">binwidth=</span>.<span class="dv">1</span>,<span class="dt">variableName=</span><span class="st">"Yield"</span>,<span class="dt">plotly=</span><span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="statsforstudents_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="statsforstudents_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p>In the “Sampling Distribution of Sample Means” tab of the shiny app, you will find these 4 functions implemented in a format consistent with the JMP tool on which this applet is based. The <span class="math inline">\(\texttt{randomSample_histogram}\)</span> and <span class="math inline">\(\texttt{sampleMeans_histogram}\)</span> functions are called once the user clicks the “Draw Additional Samples” button to show two histograms. There are also summary tables describing different aspects of the drawn samples printed next to the two histograms. At the bottom of the page, the user can click the “Show/Hide Questions” button to toggle a list of questions meant to stimulate reflection on what happens to the shape of the means histogram when more samples are drawn. For example, students will hopefully realize through these questions that the standard deviation of the empirical sampling distribution of the sample means gets closer to <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>.</p>
 <!--
 Below is a picture of the original tool as seen in JMP.
 
