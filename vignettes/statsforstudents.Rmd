@@ -36,17 +36,23 @@ statsfoRstudents::runShiny()
 
 ## Eryn
 
-Errors are something that as a statistician we should all be aware of, not only that they occur, by when and were they might occur. As an instructor for introduction to statistics, one aspect of my class that always seems to trip students up is, Type I and Type II errors. Not only do the definitions seem hard to grasp, but also thinking of type of errors as a visual part of a normal distribution. We define Type I error to be, the rejection of a true null hypothesis, while a Type II error is the failure of rejecting a false null hypothesis, in favor of an alternative. Although in introductory statistics, Type I and Type II errors only make up a small part of the coarse matterial, this small facet of statistics extends to more advanced statitical thinkings, even helps determaine rejection and acceptance regions for more advance testing models. In order to help students associate Type I error with the rejection region of a Null Hypothesis distribution, this app plots the given distribution with your a specific null mean and sd, then takes that information, plotting a specified alpha level rejection and acceptance regions. This app uses the function `ploterrors()`, which will be expained in detail below. 
+Errors are something that as a statistician we should all be aware of, not only that they occur, by when and were they might occur. As an instructor for introduction to statistics, one aspect of my class that always seems to trip students up is, Type I and Type II errors. Not only do the definitions seem hard to grasp, but also thinking of type of errors as a visual part of a normal distribution. We define Type I error to be, the rejection of a true null hypothesis, while a Type II error is the failure of rejecting a false null hypothesis, in favor of an alternative. Although in introductory statistics, Type I and Type II errors only make up a small part of the coarse material, this small facet of statistics extends to more advanced statistical thinking, even helps determine rejection and acceptance regions for more advance testing models. In order to help students associate Type I error with the rejection region of a Null Hypothesis distribution, this app plots the given distribution with your a specific null mean and sd, then takes that information, plotting a specified alpha level rejection and acceptance regions. This app uses the function `ploterrors()`, which will be explained in detail below. 
 
 ### ploterrors() 
 
-The function, `ploterrors()`, takes the users input, specifying a mean and standard deviation to plot a normal distribution density. This underlining normal distribution then takes an inuputted alpha level and a direction of the alternative hypothesis test to graph the corresponding rejection, where a Type I error may occur, stacked on top of a density plot of the acceptance region 
+The function, `ploterrors()`, takes the users input, specifying a mean and standard deviation to plot a normal distribution density. This underlining normal distribution then takes an inputted alpha level and a direction of the alternative hypothesis test to graph the corresponding rejection, where a Type I error may occur, stacked on top of a density plot of the acceptance region. These plots are exported in a list of plotly arguments. 
+```{r fig.height=1.5}
+ploterrors(means =15,sds=3,alpha=.25,direction=">")
+```
+
+
+The intent of this function is to give the user a way to visually determine where an error may occur, either in the critical region, or in the acceptance region. This function is used by itself in the "Type of Errors" tab of the shiny app.
 
 ## Gulzina
 
 ## Charlotte
 
-As a STAT 101 teaching assistant, I see many students struggle to grasp then immediately forget how to properly analyze a histogram. While this very small facet of statistical education may seem trivial we use descriptions of histograms to diagnose whether distributions can be considered Normal. This in turn helps fuel a greater understanding of the assumptions required for basic hypothesis testing and whether inferences can be generalized. Therefore I have devised a very basic quiz-type app that will test whether students can correctly identify certain atributes of a histogram across three different categories: Modality, Shape, and Outliers. All three functions associated with this portion of the shiny app have very similar structure and functionality so for the sake of brevity I will only provide a walk-through of `plotModal()`.
+As a STAT 101 teaching assistant, I see many students struggle to grasp then immediately forget how to properly analyze a histogram. While this very small facet of statistical education may seem trivial we use descriptions of histograms to diagnose whether distributions can be considered Normal. This in turn helps fuel a greater understanding of the assumptions required for basic hypothesis testing and whether inferences can be generalized. Therefore I have devised a very basic quiz-type app that will test whether students can correctly identify certain attributes of a histogram across three different categories: Modality, Shape, and Outliers. All three functions associated with this portion of the shiny app have very similar structure and functionality so for the sake of brevity I will only provide a walk-through of `plotModal()`.
 
 ### plotModal()
 
@@ -63,7 +69,7 @@ Last semester many of my STAT 101 students lacked an understanding of what they 
 
 ### plotNormal()
 
-The function $\texttt{plotNormal()}$ allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the signficance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not shown in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.
+The function $\texttt{plotNormal()}$ allows the user to graph a normal distribution density by specifying a mean and standard deviation as well as an observed value to be graphed as a blue vertical dotted line. It also lets the user specify the significance level of their test, which will be visualized as a shaded region under the density curve, as well as the direction of their alternative hypothesis. While not shown in this vignette, the user can also indicate whether they want a ggplot object to be returned or a more interactive plotly object.
 
 The intent of this function is to give the user a way to visually determine whether their observed value falls in the critical region. This function is used by itself in the "Normal Plot" tab of the shiny app, but I believe its most useful inclusion is in the "Hypothesis Test Challenge" tab.
 
@@ -97,9 +103,9 @@ Once the user gets to the "Compare Test Statistic to Null Distribution" step of 
 
 ### Sampling Distribution of Sample Means Visualization Tool
 
-The "Sampling Distributon of Sample Means" tab in the shiny app was inspired by a similar app that STAT 101 students periodically use in their lab assignments. This app is meant to demonstrate to students the fact that for a fixed sample size, the sampling distribution of sample means converges in distribution to a normal distribution with mean equal to the population mean, $\mu$, and standard deviaton equal to the population standard deviation divided by the square root of the sample size, $\frac{\sigma}{\sqrt{n}}$. The main issue that I had with the original app was that it was written in JMP, which I prefer to avoid if at all possible. I thought that the tool would be more accessible to students if they could use it without having to install JMP.
+The "Sampling Distribution of Sample Means" tab in the shiny app was inspired by a similar app that STAT 101 students periodically use in their lab assignments. This app is meant to demonstrate to students the fact that for a fixed sample size, the sampling distribution of sample means converges in distribution to a normal distribution with mean equal to the population mean, $\mu$, and standard deviation equal to the population standard deviation divided by the square root of the sample size, $\frac{\sigma}{\sqrt{n}}$. The main issue that I had with the original app was that it was written in JMP, which I prefer to avoid if at all possible. I thought that the tool would be more accessible to students if they could use it without having to install JMP.
 
-This tool relies on 4 simple functions to generate, aggregate, and plot random normal data. The function $\texttt{randomSample()}$ generates just that, a dataframe containing a set of random samples from a normal distribution with a specified mean, standard deviation, and sample size.
+This tool relies on 4 simple functions to generate, aggregate, and plot random normal data. The function $\texttt{randomSample()}$ generates just that, a data frame containing a set of random samples from a normal distribution with a specified mean, standard deviation, and sample size.
 
 ```{r}
 samp <- randomSample(mu=0,sigma=1,sampleSize=25,numSamples=100)
