@@ -36,7 +36,11 @@ statsfoRstudents::runShiny()
 
 ## Eryn
 
-As an instructor for introduction to statistics, one aspect of my class that always seems to trip students up is, Type I and Type II errors. 
+Errors are something that as a statistician we should all be aware of, not only that they occur, by when and were they might occur. As an instructor for introduction to statistics, one aspect of my class that always seems to trip students up is, Type I and Type II errors. Not only do the definitions seem hard to grasp, but also thinking of type of errors as a visual part of a normal distribution. We define Type I error to be, the rejection of a true null hypothesis, while a Type II error is the failure of rejecting a false null hypothesis, in favor of an alternative. Although in introductory statistics, Type I and Type II errors only make up a small part of the coarse matterial, this small facet of statistics extends to more advanced statitical thinkings, even helps determaine rejection and acceptance regions for more advance testing models. In order to help students associate Type I error with the rejection region of a Null Hypothesis distribution, this app plots the given distribution with your a specific null mean and sd, then takes that information, plotting a specified alpha level rejection and acceptance regions. This app uses the function `ploterrors()`, which will be expained in detail below. 
+
+### ploterrors() 
+
+The function, `ploterrors()`, takes the users input, specifying a mean and standard deviation to plot a normal distribution density. This underlining normal distribution then takes an inuputted alpha level and a direction of the alternative hypothesis test to graph the corresponding rejection, where a Type I error may occur, stacked on top of a density plot of the acceptance region 
 
 ## Gulzina
 

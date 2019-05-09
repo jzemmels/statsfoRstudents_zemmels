@@ -4,11 +4,27 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-##Our hex sticker: 
+##Hex sticker: 
+
+```{r, include=FALSE}
+library(hexSticker)
+library(magick)
+```
+
+
+```{r, include=FALSE}
+student<-image_read("student.jpg")%>%
+  image_transparent("white", fuzz=10)
+```
+
+```{r,include=FALSE}
+statR<- sticker(student, s_x=.95, s_y=.8,s_width=1.5, s_height=1.5, package = "statsfoRstudents", p_size=9, p_color = "red", h_color="yellow", h_size=3.5, p_family = "serif", p_y = 1.5, h_fill="white")
+```
 
 ```{r}
-
+statR
 ```
+
 
 
 ## STAT 585 Final Project: statsfoRstudents package/shiny app
