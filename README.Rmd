@@ -4,9 +4,17 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+##Our hex sticker: 
+
+```{r}
+
+```
+
+
 ## STAT 585 Final Project: statsfoRstudents package/shiny app
 
 [![Coverage status](https://codecov.io/gh/jzemmels/finalProject/branch/master/graph/badge.svg)](https://codecov.io/github/jzemmels/finalProject?branch=master)
+
 
 This is a package meant to supplement the content of two introductory statistics courses at Iowa State University, STAT 101 and STAT 104. To install this package from github, run the following in your R console:
 

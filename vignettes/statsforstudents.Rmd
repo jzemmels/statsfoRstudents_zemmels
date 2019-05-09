@@ -36,6 +36,8 @@ shiny::runApp(appDir = "inst/shiny")
 
 ## Eryn
 
+As an instructor for introduction to statistics, one aspect of my class that always seems to trip students up is, Type I and Type II errors. 
+
 ## Gulzina
 
 ## Charlotte
