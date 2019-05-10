@@ -36,7 +36,7 @@ The function of this package is mainly in-service to the shiny app that accompan
 statsfoRstudents::runShiny()
 ```
 
-A summary of the individual applets inside this shiny app is provided here:
+A summary of the some of the individual applets inside this shiny app is provided here:
 
  - **Normal Plot:** A visual tool for determining when to reject vs. fail to reject a null hypothesis.
  
@@ -46,8 +46,10 @@ A summary of the individual applets inside this shiny app is provided here:
  
  For a more thorough discussion of each applet and how they are implemented behing the scenes, please see the vignette in the vignettes folder of this package or [by following this link](https://jzemmels.github.io/statsfoRstudents/articles/statsforstudents.html)
 
+<!--
 #### TODO:
  - add more information to .Rmd about function of package/app
  - presentation slides
  - vignette
  - (maybe) add "Help" button to each tab of the shiny app that links to the correct section of the vignette (should just be a renderUI)
+-->
