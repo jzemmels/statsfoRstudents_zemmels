@@ -49,6 +49,33 @@ ploterrors(means =15,sds=3,alpha=.25,direction=">")
 The intent of this function is to give the user a way to visually determine where an error may occur, either in the critical region, or in the acceptance region. This function is used by itself in the "Type of Errors" tab of the shiny app.
 
 ## Gulzina
+```{r, include=FALSE}
+library(dplyr)
+library(plotly)
+library(statsfoRstudents)
+```
+Two functions of this package cover the Bootstrap concept, which is another "nightmare" for students and teachers. Bootstrap is istelf a remedy for the impossible task in statistics - sampling from the population. Since it is almost never possible to get the "true" population, we simulate the population from one original distirbution using bootstrapping method. To better and easier explanation of this concept, as well as another concepts hidden in it: sampling with replacement and central limit theorem.
+
+### bootstrapSample(d, n)
+
+This function takes in two parameters: *d* and *n*. *d* is an original sample in a vector form. *n* is integer and number of bootsrtap samples user wants as output. Output comes as a list with n bootstrap samples as its elements.
+```{r, fig.height=3.5, fig.width=7}
+bsamples <- bootstrapSample(rnorm(30), 100)
+
+# check if output is a list
+is.list(bsamples)
+
+# get the sampling distribution of bootstrap sample means
+bsamples %>% lapply(mean) %>% unlist %>% 
+  hist(main = "Sampling distribution of bootstrap sample means")
+```
+
+### bootstrapProcess(d, anime)
+This function takes in two parameters: *d* and *anime*. *d* is an original sample in a vector form. *anime* is a boolean which turns on/off animation in the output plot.
+```{r, fig.height=3.5, fig.width=7}
+# animation is turned off
+bootstrapProcess(rnorm(30), anime = FALSE)
+```
 
 ## Charlotte
 
