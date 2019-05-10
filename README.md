@@ -1,5 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+
 STAT 585 Final Project: statsfoRstudents package/shiny app
 ----------------------------------------------------------
 
