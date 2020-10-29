@@ -6,211 +6,182 @@ library(shinyjs)
 library(dplyr)
 #library(checkmate)
 
-shinyUI(fluidPage(title="STAT 585",useShinyjs(),
+shinyUI(fluidPage(title="statsfoRstudents Zemmels' Shiny Tools",useShinyjs(),
                   tabsetPanel(#widths=c(2,10),
-                    tabPanel(title = h4("Type I Error vs Type II error"),
+                    # tabPanel(title = h4("Type I Error vs Type II error"),
+                    #
+                    #          # Sidebar input
+                    #          sidebarPanel(
+                    #            helpText("Choose the following parameters:"),
+                    #            numericInput("Errors_means", "Mean: ", value=0),
+                    #            numericInput("Errors_sds", "Standard deviation:",
+                    #                         value = 1, min=0.0001),
+                    #            numericInput("alpha_eryn", "Alpha Level", value=0.5, min=0.00000001, max=0.49),
+                    #            selectInput("dir_eryn",
+                    #                        label="Direction of Alternative Hypothesis",
+                    #                        choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
+                    #                                       ">",
+                    #                                       "<"))
+                    #          ),
+                    #
+                    #          # Show a plot of the generated distribution
+                    #          mainPanel(
+                    #            h4("Area where there could be a Type I error"),
+                    #            plotlyOutput("plotup"),
+                    #            h4("Area where there could be a Type II error"),
+                    #            plotlyOutput("plotlw")
+                    #          )
+                    # ),
 
-                             # Sidebar input
-                             sidebarPanel(
-                               helpText("Choose the following parameters:"),
-                               numericInput("Errors_means", "Mean: ", value=0),
-                               numericInput("Errors_sds", "Standard deviation:",
-                                            value = 1, min=0.0001),
-                               numericInput("alpha_eryn", "Alpha Level", value=0.5, min=0.00000001, max=0.49),
-                               selectInput("dir_eryn",
-                                           label="Direction of Alternative Hypothesis",
-                                           choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
-                                                          ">",
-                                                          "<"))
-                             ),
-
-                             # Show a plot of the generated distribution
-                             mainPanel(
-                               h4("Area where there could be a Type I error"),
-                               plotlyOutput("plotup"),
-                               h4("Area where there could be a Type II error"),
-                               plotlyOutput("plotlw")
-                             )
-                    ),
-
-                    tabPanel(h4("Bootstrapping Process"),
-                             fluid = TRUE,
-                             sidebarLayout(
-                               sidebarPanel(
-                                 helpText("Choose sample"),
-                                 # select method type
-                                 radioButtons("whichmethod", "Method", choices = c("Upload file",
-                                                                                   "Generate sample"),
-                                              selected = "Generate sample"),
-                                 # condition 1: file
-                                 conditionalPanel(
-                                   helpText("Upload a file"),
-                                   condition = "input.whichmethod == 'Upload file'",
-                                   # Input: Select a file
-                                   fileInput("file", "Choose CSV File",
-                                             multiple = TRUE,
-                                             accept = c("text/csv",
-                                                        "text/comma-separated-values,text/plain",
-                                                        ".csv")),
-                                   # Horizontal line
-                                   tags$hr(),
-
-                                   # Input: Checkbox if file has header
-                                   checkboxInput("header", "Header", TRUE),
-
-                                   # Input: Select separator
-                                   radioButtons("sep", "Separator",
-                                                choices = c(Comma = ",",
-                                                            Semicolon = ";",
-                                                            Tab = "\t"),
-                                                selected = ","),
-
-                                   # Input: Select quotes
-                                   radioButtons("quote", "Quote",
-                                                choices = c(None = "",
-                                                            "Double Quote" = '"',
-                                                            "Single Quote" = "'"),
-                                                selected = '"')
-                                 ),
-                                 # condition 2: generate sample
-                                 conditionalPanel(
-                                   helpText("Sample from Normal Distribution"),
-                                   condition = "input.whichmethod == 'Generate sample'",
-                                   numericInput("mean", "Mean", value = 0),
-                                   numericInput("sd", "Standard deviation",
-                                                value = 1,
-                                                min = 0.0001,
-                                                step = 0.001)
-                                 ),
-
-                                 # select TRUE/FALSE for animation
-                                 selectInput("anime", label = h3("Animated Plot"),
-                                             choices = list(TRUE, FALSE),
-                                             selected = TRUE)
-                               ),
-
-                               # type of output
-                               mainPanel(
-                                 plotlyOutput("plot")
-                               )
-                             )
-
-                    ),
-                    tabPanel(h4("Summary of Bootstrap Sample"),
-                             fluid = TRUE,
-                             sidebarLayout(
-                               sidebarPanel(
-                                 helpText("Choose sample"),
-                                 # select method type
-                                 radioButtons("whichmethod2", "Method", choices = c("Upload file",
-                                                                                    "Generate sample"),
-                                              selected = "Generate sample"),
-                                 # condition 1: file
-                                 conditionalPanel(
-                                   helpText("Upload a file"),
-                                   condition = "input.whichmethod2 == 'Upload file'",
-                                   # Input: Select a file
-                                   fileInput("file1", "Choose CSV File",
-                                             multiple = TRUE,
-                                             accept = c("text/csv",
-                                                        "text/comma-separated-values,text/plain",
-                                                        ".csv")),
-                                   # Horizontal line
-                                   tags$hr(),
-
-                                   # Input: Checkbox if file has header
-                                   checkboxInput("header1", "Header", TRUE),
-
-                                   # Input: Select separator
-                                   radioButtons("sep1", "Separator",
-                                                choices = c(Comma = ",",
-                                                            Semicolon = ";",
-                                                            Tab = "\t"),
-                                                selected = ","),
-
-                                   # Input: Select quotes
-                                   radioButtons("quote1", "Quote",
-                                                choices = c(None = "",
-                                                            "Double Quote" = '"',
-                                                            "Single Quote" = "'"),
-                                                selected = '"')
-                                 ),
-                                 # condition 2: generate sample
-                                 conditionalPanel(
-                                   helpText("Sample from Normal Distribution"),
-                                   condition = "input.whichmethod2 == 'Generate sample'",
-                                   numericInput("mean1", "Mean", value = 0),
-                                   numericInput("sd1", "Standard deviation", value = 1, min = 0.0001)
-                                 ),
-                                 # how many bootsrtrap samples
-                                 numericInput("n", "Number of bootstrap samples: ",
-                                              value = 10,
-                                              min = 1)
-                               ),
-
-                               # type of output
-                               mainPanel(
-                                 plotOutput("hist")
-                               )
-                             )
-                    ),
-                    tabPanel(title = h4("Histogram Description Testing"),
-                             sidebarPanel(
-                               actionButton("redo", "New Distribution")
-                             ),
-                             mainPanel(
-                               tabsetPanel(
-                                 tabPanel("Modality",
-                                          plotOutput("plotModal"),
-                                          uiOutput("aspectModal"),
-                                          textOutput("feedbackModal")
-
-                                 ),
-                                 tabPanel("Shape",
-
-                                          plotOutput("plotShape"),
-                                          uiOutput("aspectShape"),
-                                          textOutput("feedbackShape")
-                                 ),
-                                 tabPanel("Outlier",
-
-                                          plotOutput("plotOutlier"),
-                                          uiOutput("aspectOutlier"),
-                                          textOutput("feedbackOutlier")
-                                 )
-
-                               )
-                             )
-                    ),
-                    tabPanel(h4("Normal Plot"),
-                             sidebarLayout(
-                               sidebarPanel(width=3,
-                                            selectInput("distributionType",
-                                                        label=h4("Population Shape"),
-                                                        choices = list("Normal",
-                                                                       "Another Option"),
-                                                        selected="Normal"),
-                                            numericInput("normalPlot_mu",
-                                                         label = h4("Population Mean"),
-                                                         value=0),
-                                            numericInput("normalPlot_sigma",
-                                                         label = h4("Population Standard Deviation"),
-                                                         value=1),
-                                            numericInput("alpha",
-                                                         label = h4("Significance Level"),
-                                                         value=.05),
-                                            selectInput("dir",
-                                                        label= h4("Direction of Alternative Hypothesis"),
-                                                        choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
-                                                                       ">",
-                                                                       "<")),
-                                            numericInput("obsZ",
-                                                         label= h4("Observed Test Statistic"),
-                                                         value=0)),
-                               # Show a plot of the generated distribution
-                               mainPanel(
-                                 plotlyOutput(outputId = "distPlot",height="700px")
-                               ))),
+                    # tabPanel(h4("Bootstrapping Process"),
+                    #          fluid = TRUE,
+                    #          sidebarLayout(
+                    #            sidebarPanel(
+                    #              helpText("Choose sample"),
+                    #              # select method type
+                    #              radioButtons("whichmethod", "Method", choices = c("Upload file",
+                    #                                                                "Generate sample"),
+                    #                           selected = "Generate sample"),
+                    #              # condition 1: file
+                    #              conditionalPanel(
+                    #                helpText("Upload a file"),
+                    #                condition = "input.whichmethod == 'Upload file'",
+                    #                # Input: Select a file
+                    #                fileInput("file", "Choose CSV File",
+                    #                          multiple = TRUE,
+                    #                          accept = c("text/csv",
+                    #                                     "text/comma-separated-values,text/plain",
+                    #                                     ".csv")),
+                    #                # Horizontal line
+                    #                tags$hr(),
+                    #
+                    #                # Input: Checkbox if file has header
+                    #                checkboxInput("header", "Header", TRUE),
+                    #
+                    #                # Input: Select separator
+                    #                radioButtons("sep", "Separator",
+                    #                             choices = c(Comma = ",",
+                    #                                         Semicolon = ";",
+                    #                                         Tab = "\t"),
+                    #                             selected = ","),
+                    #
+                    #                # Input: Select quotes
+                    #                radioButtons("quote", "Quote",
+                    #                             choices = c(None = "",
+                    #                                         "Double Quote" = '"',
+                    #                                         "Single Quote" = "'"),
+                    #                             selected = '"')
+                    #              ),
+                    #              # condition 2: generate sample
+                    #              conditionalPanel(
+                    #                helpText("Sample from Normal Distribution"),
+                    #                condition = "input.whichmethod == 'Generate sample'",
+                    #                numericInput("mean", "Mean", value = 0),
+                    #                numericInput("sd", "Standard deviation",
+                    #                             value = 1,
+                    #                             min = 0.0001,
+                    #                             step = 0.001)
+                    #              ),
+                    #
+                    #              # select TRUE/FALSE for animation
+                    #              selectInput("anime", label = h3("Animated Plot"),
+                    #                          choices = list(TRUE, FALSE),
+                    #                          selected = TRUE)
+                    #            ),
+                    #
+                    #            # type of output
+                    #            mainPanel(
+                    #              plotlyOutput("plot")
+                    #            )
+                    #          )
+                    #
+                    # ),
+                    # tabPanel(h4("Summary of Bootstrap Sample"),
+                    #          fluid = TRUE,
+                    #          sidebarLayout(
+                    #            sidebarPanel(
+                    #              helpText("Choose sample"),
+                    #              # select method type
+                    #              radioButtons("whichmethod2", "Method", choices = c("Upload file",
+                    #                                                                 "Generate sample"),
+                    #                           selected = "Generate sample"),
+                    #              # condition 1: file
+                    #              conditionalPanel(
+                    #                helpText("Upload a file"),
+                    #                condition = "input.whichmethod2 == 'Upload file'",
+                    #                # Input: Select a file
+                    #                fileInput("file1", "Choose CSV File",
+                    #                          multiple = TRUE,
+                    #                          accept = c("text/csv",
+                    #                                     "text/comma-separated-values,text/plain",
+                    #                                     ".csv")),
+                    #                # Horizontal line
+                    #                tags$hr(),
+                    #
+                    #                # Input: Checkbox if file has header
+                    #                checkboxInput("header1", "Header", TRUE),
+                    #
+                    #                # Input: Select separator
+                    #                radioButtons("sep1", "Separator",
+                    #                             choices = c(Comma = ",",
+                    #                                         Semicolon = ";",
+                    #                                         Tab = "\t"),
+                    #                             selected = ","),
+                    #
+                    #                # Input: Select quotes
+                    #                radioButtons("quote1", "Quote",
+                    #                             choices = c(None = "",
+                    #                                         "Double Quote" = '"',
+                    #                                         "Single Quote" = "'"),
+                    #                             selected = '"')
+                    #              ),
+                    #              # condition 2: generate sample
+                    #              conditionalPanel(
+                    #                helpText("Sample from Normal Distribution"),
+                    #                condition = "input.whichmethod2 == 'Generate sample'",
+                    #                numericInput("mean1", "Mean", value = 0),
+                    #                numericInput("sd1", "Standard deviation", value = 1, min = 0.0001)
+                    #              ),
+                    #              # how many bootsrtrap samples
+                    #              numericInput("n", "Number of bootstrap samples: ",
+                    #                           value = 10,
+                    #                           min = 1)
+                    #            ),
+                    #
+                    #            # type of output
+                    #            mainPanel(
+                    #              plotOutput("hist")
+                    #            )
+                    #          )
+                    # ),
+                    # tabPanel(title = h4("Histogram Description Testing"),
+                    #          sidebarPanel(
+                    #            actionButton("redo", "New Distribution")
+                    #          ),
+                    #          mainPanel(
+                    #            tabsetPanel(
+                    #              tabPanel("Modality",
+                    #                       plotOutput("plotModal"),
+                    #                       uiOutput("aspectModal"),
+                    #                       textOutput("feedbackModal")
+                    #
+                    #              ),
+                    #              tabPanel("Shape",
+                    #
+                    #                       plotOutput("plotShape"),
+                    #                       uiOutput("aspectShape"),
+                    #                       textOutput("feedbackShape")
+                    #              ),
+                    #              tabPanel("Outlier",
+                    #
+                    #                       plotOutput("plotOutlier"),
+                    #                       uiOutput("aspectOutlier"),
+                    #                       textOutput("feedbackOutlier")
+                    #              )
+                    #
+                    #            )
+                    #          )
+                    # ),
                     tabPanel(h4("Hypothesis Test Challenge"),
                              tags$head(
                                tags$style(
@@ -378,13 +349,43 @@ shinyUI(fluidPage(title="STAT 585",useShinyjs(),
                                           ) #/ tr
                              ) #/ table
                     ),
-
+                    tabPanel(h4("Normal Plot"),
+                             sidebarLayout(
+                               sidebarPanel(width=3,
+                                            selectInput("distributionType",
+                                                        label=h4("Population Shape"),
+                                                        choices = list("Normal"
+                                                                       # ,"Another Option"
+                                                                       ),
+                                                        selected="Normal"),
+                                            numericInput("normalPlot_mu",
+                                                         label = h4("Population Mean"),
+                                                         value=0),
+                                            numericInput("normalPlot_sigma",
+                                                         label = h4("Population Standard Deviation"),
+                                                         value=1),
+                                            numericInput("alpha",
+                                                         label = h4("Significance Level"),
+                                                         value=.05),
+                                            selectInput("dir",
+                                                        label= h4("Direction of Alternative Hypothesis"),
+                                                        choices = list(intToUtf8("8800"), #8800 is HTML for "not equal to"
+                                                                       ">",
+                                                                       "<")),
+                                            numericInput("obsZ",
+                                                         label= h4("Observed Test Statistic"),
+                                                         value=0)),
+                               # Show a plot of the generated distribution
+                               mainPanel(
+                                 plotlyOutput(outputId = "distPlot",height="700px")
+                               ))),
                     tabPanel(h4("Sampling Distribution of Sample Means"),
                              sidebarLayout(
                                sidebarPanel(width=3,selectInput("distributionType",
                                                                 label=h4("Population Shape"),
-                                                                choices = list("Normal",
-                                                                               "Another Option"),
+                                                                choices = list("Normal"
+                                                                               # ,"Another Option"
+                                                                               ),
                                                                 selected="Normal"),
                                             numericInput("sampleDist_mu",
                                                          label = h4("Population Mean"),

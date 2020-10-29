@@ -1,0 +1,12 @@
+name: statsfoRstudents_zemmels
+title: statsfoRstudents_zemmels
+username:
+account: jzemmels
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3123986
+bundleId: 3798055
+url: https://jzemmels.shinyapps.io/statsfoRstudents_zemmels/
+when: 1604000320.16857
+asMultiple: FALSE
+asStatic: FALSE

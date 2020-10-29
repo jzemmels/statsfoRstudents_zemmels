@@ -36,7 +36,8 @@ plotNormal <- function(mu=0,sigma=1,alpha=.05,obs=NULL,direction=intToUtf8("8800
   x <- seq(mu - 3*sigma,mu + 3*sigma,by = sigma/100)
 
   plt <- ggplot(as.data.frame(x), aes(x)) +
-    stat_function(fun = dnorm,args=list(mean=mu,sd=sigma)) +
+    geom_line(aes(x = x,y = dnorm(x,mean = mu,sd = sigma))) +
+    # stat_function(fun = dnorm,args=list(mean=mu,sd=sigma)) +
     theme_bw()
 
   if(direction == intToUtf8("8800")){ #two-sided. intToUtf8("8800") is not-equal-to
